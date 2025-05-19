@@ -4,12 +4,13 @@ import { Menu, Moon, Sun, X } from 'lucide-react';
 import { NavLink } from 'react-router';
 import { FaGoogle } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router';
 
 const Header = () => {
     const { toggleTheme, theme } = use(AuthContext)
     const [open, setOpen] = useState(false)
     return (
-        <div className='flex poppins-regular justify-between w-11/12 pt-6 text-xl  mx-auto'>
+        <div className='flex poppins-regular justify-between w-11/12 py-5 text-xl  mx-auto'>
             <span onClick={() => setOpen(!open)} className='flex lg:hidden gap-4'>
                 {
                     open ? <X size={30} className='lg:hidden my-auto'></X> : <Menu size={30} className='lg:hidden my-auto' />
@@ -19,11 +20,11 @@ const Header = () => {
                         <p className='my-auto md:hidden text-3xl md:text-4xl lg:text-5xl font-bold'>RooMatch</p>
                     </div>
                     <li className='border-b-1 text-gray-100 py-1'><NavLink to={'/'}>Home</NavLink></li>
-                    <li className='border-b-1 text-gray-100 py-1'><NavLink to={'/about'}>Browse Roommates</NavLink></li>
-                    <li className='border-b-1 text-gray-100 py-1' ><NavLink to={'/dash'}>DashBoard</NavLink></li>
-                    <li><button className='btn-block cursor-pointer text-red-600 border-b-1 py-1'>Sign Up</button></li>
-                    <li><button className='btn-block cursor-pointer text-red-600 border-b-1 py-1'>Log In</button></li>
-                    <li><button className='btn-block cursor-pointer  flex justify-between border-b-1 py-1'><FcGoogle className='my-auto' /> Google SignIn</button></li>
+                    <li className='border-b-1 text-gray-100 py-1'><NavLink to={'/browsinglisting'}>Browse Roommates</NavLink></li>
+                    <li className='border-b-1 text-gray-100 py-1' ><NavLink to={'/blog'}>Blog</NavLink></li>
+                    <Link to={'/auth/register'}><button className='btn-block cursor-pointer text-red-600 border-b-1 py-1'>Sign Up</button></Link>
+                    <Link to={'/auth/signin'}><button className='btn-block cursor-pointer text-red-600 border-b-1 py-1'>Log In</button></Link>
+                    <Link><button className='btn-block cursor-pointer  flex justify-between border-b-1 py-1'><FcGoogle className='my-auto' /> Google SignIn</button></Link>
                 </ul>
 
             </span>
@@ -33,10 +34,10 @@ const Header = () => {
             <ul className='lg:flex text-gray-500 text-lg font-semibold my-auto hidden gap-5'>
 
                 <li className='my-auto'><NavLink to={'/'}>Home</NavLink></li>
-                <li className='my-auto'><NavLink to={'/about'}>About</NavLink></li>
-                <li className='my-auto'><NavLink to={'/dash'}>DashBoard</NavLink></li>
-                <li className='text-red-400 my-auto cursor-pointer'> Sign Up</li>
-                <li className=' border text-red-400 cursor-pointer rounded-2xl py-0.5 px-1'>Log In</li>
+                <li className='my-auto'><NavLink to={'/blog'}>Blog</NavLink></li>
+                <li className='my-auto'><NavLink to={'/browsinglisting'}>Browse Roommates</NavLink></li>
+                <Link to={'/auth/register'} className='text-red-400 my-auto cursor-pointer'> Sign Up</Link>
+                <Link to={'/auth/signin'} className=' border text-red-400 cursor-pointer rounded-2xl py-0.5 px-1'>Log In</Link>
             </ul>
             <div className='my-auto'>
                 <button className='cursor-pointer' onClick={toggleTheme}>
