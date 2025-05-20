@@ -8,7 +8,7 @@ const Home = () => {
     const webInfo=useLoaderData()
     console.log(webInfo)
     return (
-        <div className='min-h-screen'>
+        <div>
             <div>
                 <Header />
             </div>
@@ -17,7 +17,7 @@ const Home = () => {
 
                 </Banner>
             </div>
-            <div>
+            <div className='min-h-screen'>
                 <Outlet />
             </div>
             <div>

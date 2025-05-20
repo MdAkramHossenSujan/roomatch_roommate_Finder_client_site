@@ -6,11 +6,11 @@ import Footer from '../components/Footer';
 
 const Auth = () => {
     return (
-        <div>
+        <div >
             <div>
                 <Header />
             </div>
-            <div>
+            <div className='min-h-screen'>
                 <Outlet />
             </div>
             <div>
