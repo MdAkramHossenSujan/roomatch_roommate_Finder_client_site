@@ -14,7 +14,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Bannercard from './Bannercard';
 
 const Banner = ({webInfo}) => {
-console.log(webInfo)
+// console.log(webInfo)
     return (
         <>
         
