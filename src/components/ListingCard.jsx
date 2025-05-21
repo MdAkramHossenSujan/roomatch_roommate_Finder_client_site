@@ -34,7 +34,6 @@ const ListingCard = () => {
             className='xl:py-14 py-10'
         >
 
-            {/* Blurred Background Image */}
             <div
                 style={{
                     backgroundImage: `url(https://i.ibb.co/KvndgXf/pexels-rdne-7683817.jpg)`,
@@ -50,7 +49,6 @@ const ListingCard = () => {
                 }}
             />
 
-            {/* Clear Content Layer */}
             <div
                 className="flex md:w-4/5 mx-auto flex-col items-center justify-center p-8"
                 style={{ position: 'relative', zIndex: 10 }}

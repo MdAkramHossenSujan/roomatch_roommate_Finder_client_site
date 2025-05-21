@@ -11,6 +11,9 @@ import Auth from "../Pages/Auth";
 import Register from "../auth/Register";
 import SignIn from "../auth/SignIn";
 import PrivateRoute from "../Provider/PrivateRoute";
+
+import RoomMateDetails from "../Pages/RoomMateDetails";
+import UpdateRoomMate from "../Pages/UpdateRoomMate";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -34,7 +37,17 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/browselisting/:id',
-                loader:
+                loader:({params})=>fetch(`http://localhost:3000/roommates/${params.id}`),
+                element:<PrivateRoute>
+                    <RoomMateDetails></RoomMateDetails>
+                </PrivateRoute>
+            },
+                    {
+                path: '/updatelisting/:id',
+                loader:({params})=>fetch(`http://localhost:3000/roommates/${params.id}`),
+                element:<PrivateRoute>
+                   <UpdateRoomMate></UpdateRoomMate>
+                </PrivateRoute>
             },
             {
                 path: '/mylisting',
