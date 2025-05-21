@@ -1,8 +1,29 @@
 import React, { use } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import toast from 'react-hot-toast';
 
-const UpdateRoomMateCard = () => {
+const UpdateRoomMateCard = ({data}) => {
     const { user } = use(AuthContext);
+    const handleSubmit=(e)=>{
+          e.preventDefault();
+        const formData = new FormData(e.target);
+        const updatedData = Object.fromEntries(formData.entries());
+        console.log('Coffee Data:', data);
+        e.target.reset();
+        fetch(`http://localhost:3000/roommates/${data._id}`,{
+            method:"PUT",
+           headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedData),
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if (data.modifiedCount) {
+                   toast.success('Updated Data Successfully')
+                }
+        })
+    }
     return (
         <div
             className="flex w-11/12 md:w-4/5 mx-auto flex-col items-center justify-center p-2 md:p-4 lg:p-8 bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-100"
@@ -14,7 +35,7 @@ const UpdateRoomMateCard = () => {
                 Then, fill out the details to list your space. This helps others find the right match!
             </p>
 
-            <form className="rounded-xl  p-4 md:p-6 lg:p-8 w-full max-w-4xl lg:max-w-5xl bg-white dark:bg-gray-900 bg-opacity-90 shadow-2xl backdrop-blur-xl transition-all duration-300">
+            <form onSubmit={handleSubmit} className="rounded-xl  p-4 md:p-6 lg:p-8 w-full max-w-4xl lg:max-w-5xl bg-white dark:bg-gray-900 bg-opacity-90 shadow-2xl backdrop-blur-xl transition-all duration-300">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label className="block text-gray-800 dark:text-white font-semibold mb-2">Objectives</label>

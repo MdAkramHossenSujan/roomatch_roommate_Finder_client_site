@@ -24,7 +24,7 @@ const DetailedCard = ({ data }) => {
     photo,
     objectives,
   } = data;
-
+console.log(data._id)
   const formattedDate = createdAt
     ? new Date(createdAt.trim()).toLocaleDateString('en-US', {
         year: 'numeric',
