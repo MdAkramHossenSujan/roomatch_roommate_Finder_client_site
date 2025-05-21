@@ -34,8 +34,8 @@ const Header = () => {
                         }
                     </div>
                     <li className='border-b-1 dark:text-green-800 text-gray-100 py-1'><NavLink to={'/'}>Home</NavLink></li>
-                          <li className='border-b-1 dark:text-green-800 text-gray-100 py-1' ><NavLink to={'/addlisting'}>Add RoomMate</NavLink></li>
-                    <li className='border-b-1 dark:text-green-800 text-gray-100 py-1'><NavLink to={'/browsinglisting'}>Browse Roommates</NavLink></li>
+                    <li className='border-b-1 dark:text-green-800 text-gray-100 py-1' ><NavLink to={'/addlisting'}>Add RoomMate</NavLink></li>
+                    <li className='border-b-1 dark:text-green-800 text-gray-100 py-1'><NavLink to={'/browselisting'}>Browse Roommates</NavLink></li>
                     <li className='border-b-1 dark:text-green-800 text-gray-100 py-1' ><NavLink to={'/mylisting'}>Added By Me</NavLink></li>
 
                     {
@@ -53,7 +53,7 @@ const Header = () => {
             <ul className='lg:flex text-gray-500 text-lg font-semibold my-auto hidden gap-5'>
 
                 <li className='my-auto'><NavLink to={'/'}>Home</NavLink></li>
-                      <li className='my-auto' ><NavLink to={'/addlisting'}>Add RoomMate</NavLink></li>
+                <li className='my-auto' ><NavLink to={'/addlisting'}>Add RoomMate</NavLink></li>
 
                 <div onClick={() => setDropDown(!dropDown)} className="dropdown my-auto dropdown-center">
                     <div
@@ -70,7 +70,7 @@ const Header = () => {
                         )}
                     </div>
                     <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                        <li><NavLink to={'/browsinglisting'}>Browse Roommates</NavLink></li>
+                        <li><NavLink to={'/browselisting'}>Browse Roommates</NavLink></li>
                         <li><NavLink to={'/mylisting'}>Added By Me</NavLink></li>
                     </ul>
                 </div>
@@ -87,11 +87,15 @@ const Header = () => {
                         user && <img onClick={handleSignOut} className={`w-10 cursor-pointer h-10 rounded-full mx-auto my-auto`} src={`${user?.photoURL ? user?.photoURL : 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}`} alt="" />
                     }
                 </div>
-                <button className='cursor-pointer my-auto' onClick={toggleTheme}>
-                    {
-                        theme == 'dark' ? <Sun /> : <Moon />
-                    }
-                </button>
+                <label
+                    className={`cursor-pointer swap swap-rotate my-auto ${theme === 'dark' ? 'swap-active' : ''}`}
+                    onClick={toggleTheme}
+                >
+                    <Sun size={30} className="swap-on text-yellow-500 transition-transform duration-100" />
+
+                    <Moon size={30} className="swap-off  transition-transform duration-100" />
+                </label>
+
             </div>
 
         </div>

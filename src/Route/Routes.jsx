@@ -20,17 +20,21 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader:()=>fetch('http://localhost:3000/city')
+                loader: () => fetch('http://localhost:3000/city')
             },
             {
                 path: '/addlisting',
-                element:<PrivateRoute>
-                     <AddListing></AddListing>
+                element: <PrivateRoute>
+                    <AddListing></AddListing>
                 </PrivateRoute>
             },
             {
-                path: '/browsinglisting',
+                path: '/browselisting',
                 element: <BrowserListing></BrowserListing>
+            },
+            {
+                path: '/browselisting/:id',
+                loader:
             },
             {
                 path: '/mylisting',

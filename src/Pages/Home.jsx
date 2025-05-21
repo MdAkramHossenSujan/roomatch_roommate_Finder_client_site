@@ -3,10 +3,10 @@ import Header from '../components/Header';
 import { Outlet, useLoaderData } from 'react-router';
 import Footer from '../components/Footer';
 import Banner from '../components/Banner';
+import Featured from '../components/Featured';
 
 const Home = () => {
     const webInfo=useLoaderData()
-    // console.log(webInfo)
     return (
         <div>
             <div>
@@ -17,8 +17,11 @@ const Home = () => {
 
                 </Banner>
             </div>
-            <div className='min-h-screen'>
+            <div>
                 <Outlet />
+            </div>
+            <div>
+                <Featured></Featured>
             </div>
             <div>
                 <Footer />

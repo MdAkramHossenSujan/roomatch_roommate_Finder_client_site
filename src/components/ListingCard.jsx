@@ -10,7 +10,7 @@ const ListingCard = () => {
         const data = Object.fromEntries(formData.entries());
         console.log('Coffee Data:', data);
         e.target.reset();
-        fetch('http://localhost:3000/roommates', {
+        fetch('http://localhost:3000/roommatessix', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -65,7 +65,7 @@ const ListingCard = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label className="block text-white font-semibold mb-2">Objectives</label>
-                            <input required type="text" name="title" placeholder="Write What You Want To Do!" className="w-full text-black rounded px-4 py-2 bg-white" />
+                            <input required type="text" name="objectives" placeholder="Write What You Want To Do!" className="w-full text-black rounded px-4 py-2 bg-white" />
                         </div>
                         <div>
                             <label className="block text-white font-semibold mb-2">Location</label>
@@ -82,7 +82,7 @@ const ListingCard = () => {
 
                         <div>
                             <label className="block text-white font-semibold mb-2">Profession</label>
-                            <input required type="text" name="roomType" placeholder="Enter Your Profession" className="w-full text-black rounded px-4 py-2 bg-white" />
+                            <input required type="text" name="profession" placeholder="Enter Your Profession" className="w-full text-black rounded px-4 py-2 bg-white" />
                         </div>
                         <div>
                             <label className="block text-white font-semibold mb-2">Lifestyle Preferences</label>
@@ -90,13 +90,13 @@ const ListingCard = () => {
                         </div>
                         <div>
                             <label className="block text-white font-semibold mb-2">Age</label>
-                            <input min="1" required type="number" name="lifestyle" placeholder="Enter Your Age" className="w-full text-black rounded px-4 py-2 bg-white" />
+                            <input min="1" required type="number" name="age" placeholder="Enter Your Age" className="w-full text-black rounded px-4 py-2 bg-white" />
                         </div>
                         <div>
                             <label className="block text-white font-semibold mb-2">Gender</label>
-                            <select name="availability" className="w-full text-black rounded px-4 py-2 bg-white">
-                                <option value="available">Male</option>
-                                <option value="not-available">Female</option>
+                            <select name="gender" className="w-full text-black rounded px-4 py-2 bg-white">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
                             </select>
                         </div>
                         <div>
@@ -121,12 +121,12 @@ const ListingCard = () => {
                         </div>
                     </div>
                     <div>
-                        <label className="block text-white font-semibold mt-2">Photo URL Of The Room</label>
-                        <input type="text" name="userName" placeholder='Press a URL Of The Room Or Yourself' className="w-full text-black rounded px-4 py-2 bg-gray-100" />
+                        <label className="block text-white font-semibold mt-4">Photo URL Of The Room</label>
+                        <input type="text" name="photo" placeholder='Press a URL Of The Room Or Yourself' className="w-full text-black rounded px-4 py-2 bg-gray-100" />
                     </div>
 
                     <div>
-                        <label className="block text-white font-semibold mt-2">Description</label>
+                        <label className="block text-white font-semibold mt-4">Description</label>
                         <textarea name="description" placeholder="Write more about the place..." className="w-full text-black border rounded px-4 py-2 bg-white"></textarea>
                     </div>
 
