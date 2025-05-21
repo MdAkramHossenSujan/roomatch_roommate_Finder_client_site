@@ -25,6 +25,7 @@ const ListingCard = () => {
                 }
             })
     }
+    console.log(user)
     return (
         <div
             style={{

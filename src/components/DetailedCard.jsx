@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { use } from 'react';
 import {
   Mail, Phone, MapPin, User, Briefcase, Info, BedDouble,
   CalendarDays, Heart, Pencil, Trash2, CheckCircle, XCircle
 } from 'lucide-react';
 import { BiLike } from 'react-icons/bi';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const DetailedCard = ({ data }) => {
   const {
@@ -34,7 +35,13 @@ console.log(data._id)
     : 'Unknown';
 
   const isAvailable = availability?.toLowerCase() === 'available';
-
+const navigate=useNavigate()
+const {user}=use(AuthContext)
+const handleNavigate=()=>{
+if(userEmail==user.email){
+    navigate(`/updatelisting/${data._id}`)
+}
+}
   return (
     <div className="bg-white w-11/12 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-3xl shadow-xl max-w-3xl mx-auto p-8 border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300">
       
@@ -75,11 +82,11 @@ console.log(data._id)
       </div>
 
       <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-end">
-        <Link to={`/updatelisting/${data._id}`}>
-        <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-2 md:px-4 md:text-sm cursor-pointer rounded-lg transition">
+       
+        <button onClick={handleNavigate} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-2 md:px-4 md:text-sm cursor-pointer rounded-lg transition">
           <Pencil size={12} className="md:w-4 md:h-4" /> Update
         </button>
-        </Link>
+        
         <button className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-2 md:px-4  md:text-sm cursor-pointer rounded-lg transition">
           <Trash2 size={12} className="md:w-4 md:h-4" /> Delete
         </button>
