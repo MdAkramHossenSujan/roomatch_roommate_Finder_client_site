@@ -6,7 +6,7 @@ import { FaGoogle, FaRegCircleUser } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router';
 import toast from 'react-hot-toast';
-
+import './Header.css'
 const Header = () => {
     const { toggleTheme, theme, user, logOut } = use(AuthContext)
     const [open, setOpen] = useState(false)
