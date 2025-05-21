@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:3000/city')
+                loader: () => fetch('https://roomatch-server.vercel.app/city')
             },
             {
                 path: '/addlisting',
@@ -37,14 +37,14 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/browselisting/:id',
-                loader:({params})=>fetch(`http://localhost:3000/roommates/${params.id}`),
+                loader:({params})=>fetch(`https://roomatch-server.vercel.app/roommates/${params.id}`),
                 element:<PrivateRoute>
                     <RoomMateDetails></RoomMateDetails>
                 </PrivateRoute>
             },
                     {
                 path: '/updatelisting/:id',
-                loader:({params})=>fetch(`http://localhost:3000/roommates/${params.id}`),
+                loader:({params})=>fetch(`https://roomatch-server.vercel.app/roommates/${params.id}`),
                 element:<PrivateRoute>
                    <UpdateRoomMate></UpdateRoomMate>
                 </PrivateRoute>
