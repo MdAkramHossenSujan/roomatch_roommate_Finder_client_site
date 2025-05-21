@@ -24,7 +24,7 @@ const Header = () => {
                 {
                     open ? <X size={30} className='lg:hidden my-auto'></X> : <Menu size={30} className='lg:hidden my-auto' />
                 }
-                <ul className={`lg:hidden z-20 text-white dark:bg-white bg-gray-700 dark:text-green-800 pr-24 pl-14 min-h-screen py-14 rounded-r-2xl duration-400 absolute ${open ? 'left-0 top-14' : '-left-100 top-14'}`}>
+                <ul className={`lg:hidden z-20 text-white dark:bg-white bg-gray-700 dark:text-green-800 pr-18 md:pr-24 pl-10 min-h-screen py-14 rounded-r-2xl duration-400 absolute ${open ? 'left-0 top-14' : '-left-100 top-14'}`}>
                     <div className='flex mb-5 flex-col gap-2'>
                         <p className='my-auto md:hidden text-3xl md:text-4xl lg:text-5xl font-bold'>RooMatch</p>
                     </div>
