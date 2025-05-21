@@ -2,20 +2,20 @@ import React, { use, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { NavLink } from 'react-router';
-import { FaGoogle } from 'react-icons/fa6';
+import { FaGoogle, FaRegCircleUser } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router';
 import toast from 'react-hot-toast';
 
 const Header = () => {
-    const { toggleTheme, theme,user,logOut } = use(AuthContext)
+    const { toggleTheme, theme, user, logOut } = use(AuthContext)
     const [open, setOpen] = useState(false)
-    const handleSignOut=()=>{
-logOut().then(()=>{
-toast.success('Logged Out Successfully')
-}).catch(error=>{
+    const handleSignOut = () => {
+        logOut().then(() => {
+            toast.success('Logged Out Successfully')
+        }).catch(error => {
 
-})
+        })
     }
     return (
         <div className='flex poppins-regular justify-between w-11/12 py-5 text-xl  mx-auto'>
@@ -27,12 +27,20 @@ toast.success('Logged Out Successfully')
                     <div className='flex mb-5 flex-col gap-2'>
                         <p className='my-auto md:hidden text-3xl md:text-4xl lg:text-5xl font-bold'>RooMatch</p>
                     </div>
+                    <div>
+                        {
+                            user && <img onClick={handleSignOut} className={`w-20 cursor-pointer h-20 rounded-full mb-6 mx-auto my-auto`} src={`${user?.photoURL ? user?.photoURL : 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}`} alt="" />
+                        }
+                    </div>
                     <li className='border-b-1 dark:text-green-800 text-gray-100 py-1'><NavLink to={'/'}>Home</NavLink></li>
                     <li className='border-b-1 dark:text-green-800 text-gray-100 py-1'><NavLink to={'/browsinglisting'}>Browse Roommates</NavLink></li>
                     <li className='border-b-1 dark:text-green-800 text-gray-100 py-1' ><NavLink to={'/blog'}>Blog</NavLink></li>
-                    <Link to={'/auth/register'}><button className='btn-block cursor-pointer text-red-600 border-b-1 py-1'>Sign Up</button></Link>
-                    <Link to={'/auth/signin'}><button className='btn-block cursor-pointer text-red-600 border-b-1 py-1'>Log In</button></Link>
-                    <Link><button className='btn-block cursor-pointer  flex justify-between border-b-1 py-1'><FcGoogle className='my-auto' /> Google SignIn</button></Link>
+                    {
+                        !user && <div className={` ${user==null?'hidden' : ''}`}>
+                            <Link to={'/auth/register'}><button className='btn-block cursor-pointer text-red-600 border-b-1 py-1'>Sign Up</button></Link>
+                            <Link to={'/auth/signin'}><button className='btn-block cursor-pointer text-red-600 border-b-1 py-1'>Log In</button></Link>
+                        </div>
+                    }
                 </ul>
 
             </span>
@@ -44,16 +52,24 @@ toast.success('Logged Out Successfully')
                 <li className='my-auto'><NavLink to={'/'}>Home</NavLink></li>
                 <li className='my-auto'><NavLink to={'/blog'}>Blog</NavLink></li>
                 <li className='my-auto'><NavLink to={'/browsinglisting'}>Browse Roommates</NavLink></li>
-                <Link to={'/auth/register'} className='text-red-400 my-auto cursor-pointer'> Sign Up</Link>
-                <Link to={'/auth/signin'} className=' border text-red-400 cursor-pointer rounded-2xl py-0.5 px-1'>Log In</Link>
+                {
+                    !user && <div className={` ${user==null?'hidden' : ''}`}>
+                        <Link to={'/auth/register'} className='text-red-400 my-auto cursor-pointer'> Sign Up</Link>
+                        <Link to={'/auth/signin'} className=' border text-red-400 cursor-pointer rounded-2xl py-0.5 px-1'>Log In</Link>
+                    </div>
+                }
             </ul>
-            <div className='my-auto'>
-                <button className='cursor-pointer' onClick={toggleTheme}>
+            <div className='my-auto flex gap-5'>
+                <div>
+                        {
+                            user && <img onClick={handleSignOut} className={`w-10 cursor-pointer h-10 rounded-full mx-auto my-auto`} src={`${user?.photoURL ? user?.photoURL : 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}`} alt="" />
+                        }
+                    </div>
+                <button className='cursor-pointer my-auto' onClick={toggleTheme}>
                     {
                         theme == 'dark' ? <Sun /> : <Moon />
                     }
                 </button>
-                <p onClick={handleSignOut}>{user?.email}</p>
             </div>
 
         </div>

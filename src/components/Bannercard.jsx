@@ -9,7 +9,6 @@ const Bannercard = ({ info }) => {
                 overflow: 'hidden',
             }}
         >
-            {/* Blurred Background Layer */}
             <div
                 style={{
                     backgroundImage: `url(${info.image})`,
