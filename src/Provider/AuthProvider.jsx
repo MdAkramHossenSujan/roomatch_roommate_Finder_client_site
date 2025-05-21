@@ -49,7 +49,7 @@ const AuthProvider = ({ children }) => {
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
-
+console.log(user)
   const AllCom = {
     theme,
     toggleTheme,

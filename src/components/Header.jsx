@@ -36,7 +36,7 @@ const Header = () => {
                     <li className='border-b-1 dark:text-green-800 text-gray-100 py-1'><NavLink to={'/browsinglisting'}>Browse Roommates</NavLink></li>
                     <li className='border-b-1 dark:text-green-800 text-gray-100 py-1' ><NavLink to={'/blog'}>Blog</NavLink></li>
                     {
-                        !user && <div className={` ${user==null?'hidden' : ''}`}>
+                        !user && <div>
                             <Link to={'/auth/register'}><button className='btn-block cursor-pointer text-red-600 border-b-1 py-1'>Sign Up</button></Link>
                             <Link to={'/auth/signin'}><button className='btn-block cursor-pointer text-red-600 border-b-1 py-1'>Log In</button></Link>
                         </div>
@@ -53,7 +53,7 @@ const Header = () => {
                 <li className='my-auto'><NavLink to={'/blog'}>Blog</NavLink></li>
                 <li className='my-auto'><NavLink to={'/browsinglisting'}>Browse Roommates</NavLink></li>
                 {
-                    !user && <div className={` ${user==null?'hidden' : ''}`}>
+                    !user && <div>
                         <Link to={'/auth/register'} className='text-red-400 my-auto cursor-pointer'> Sign Up</Link>
                         <Link to={'/auth/signin'} className=' border text-red-400 cursor-pointer rounded-2xl py-0.5 px-1'>Log In</Link>
                     </div>
