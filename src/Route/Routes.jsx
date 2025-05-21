@@ -10,6 +10,7 @@ import MyListings from "../Pages/MyListings";
 import Auth from "../Pages/Auth";
 import Register from "../auth/Register";
 import SignIn from "../auth/SignIn";
+import PrivateRoute from "../Provider/PrivateRoute";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -23,7 +24,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/addlisting',
-                element: <AddListing></AddListing>
+                element:<PrivateRoute>
+                     <AddListing></AddListing>
+                </PrivateRoute>
             },
             {
                 path: '/browsinglisting',
@@ -31,7 +34,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/mylisting',
-                element: <MyListings></MyListings>
+                element: <PrivateRoute>
+                    <MyListings></MyListings>
+                </PrivateRoute>
             },
             {
                 path: '/auth',
