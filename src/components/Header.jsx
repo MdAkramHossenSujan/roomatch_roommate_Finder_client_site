@@ -24,7 +24,7 @@ const Header = () => {
 
     const Sidebar = (
         <>
-            <div className="fixed inset-0  bg-opacity-80 z-40" onClick={() => setOpen(false)} />
+            <div className="fixed inset-0 bg-opacity-80 z-40" onClick={() => setOpen(false)} />
             <ul
                 className={`fixed top-0 left-0 z-50 w-72 h-full transform ${open ? 'translate-x-0' : '-translate-x-full'
                     } bg-gray-800 dark:bg-white text-white dark:text-green-900 p-6 transition-transform duration-300 ease-in-out shadow-xl rounded-r-3xl`}
@@ -59,7 +59,7 @@ const Header = () => {
                {
                 user &&  <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
                     <FaFolderOpen />
-                    <NavLink to="/mylisting" onClick={() => setOpen(false)}>Added By Me</NavLink>
+                    <NavLink to={`/mylisting/${user.email}`} onClick={() => setOpen(false)}>Added By Me</NavLink>
                 </li>
                }
 

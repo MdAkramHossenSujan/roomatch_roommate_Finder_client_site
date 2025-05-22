@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { use } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { useLoaderData } from 'react-router';
+
 import AllRoomMatesTR from '../components/AllRoomMatesTR';
+import { AuthContext } from '../Provider/AuthProvider';
+import { useLoaderData } from 'react-router';
 
 const BrowserListing = () => {
-    const allRoomMates = useLoaderData()
-    console.log(allRoomMates)
+    const roomMates=useLoaderData()
     return (
         <div>
             <div>
@@ -17,7 +18,7 @@ const BrowserListing = () => {
                     <table className="table">
                         {/* head */}
                         <thead>
-                            <tr>
+                            <tr className='border border-gray-600'>
                                 <th>Name</th>
                                 <th className='mx-auto'>Basic Info</th>
                                 <th>Actions</th>
@@ -25,7 +26,7 @@ const BrowserListing = () => {
                         </thead>
                         <tbody>
                             {
-                                allRoomMates.map((roomMate, index) => <AllRoomMatesTR key={index} roomMate={roomMate}></AllRoomMatesTR>)
+                                roomMates.map((roomMate, index) => <AllRoomMatesTR key={index} roomMate={roomMate}></AllRoomMatesTR>)
                             }
                         </tbody>
 

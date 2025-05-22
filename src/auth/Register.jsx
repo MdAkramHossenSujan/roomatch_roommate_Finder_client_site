@@ -82,7 +82,7 @@ const Register = () => {
                         <label className="text-lg Space-Grotesk font-bold ">Email Address</label>
                         <input required name='email' type="email" className="input text-gray-800 shadow-lg w-full" placeholder="Email" />
                         <label className="text-lg Space-Grotesk font-bold">Password</label>
-                        <input required name='password' type="password" className="input text-gray-800 w-full shadow-lg" placeholder="Password" />
+                        <input required name='password' type="password" className="input dark:text-white text-gray-800 w-full shadow-lg" placeholder="Password" />
                         {
                             passError && <p className='text-red-500'>{passError}</p>
                         }

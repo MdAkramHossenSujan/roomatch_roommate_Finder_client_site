@@ -20,9 +20,9 @@ const AuthProvider = ({ children }) => {
     setLoader(true)
     return createUserWithEmailAndPassword(auth, email, password)
   }
-   const googleSignIn=()=>{
-        return signInWithPopup(auth,provider)
-    }
+  const googleSignIn = () => {
+    return signInWithPopup(auth, provider)
+  }
   useEffect(() => {
     const userState = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser)
@@ -49,7 +49,7 @@ const AuthProvider = ({ children }) => {
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
-// console.log(user)
+  // console.log(user)
   const AllCom = {
     theme,
     toggleTheme,

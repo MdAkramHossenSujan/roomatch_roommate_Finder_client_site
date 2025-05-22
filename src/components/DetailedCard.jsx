@@ -81,15 +81,7 @@ if(userEmail==user.email){
         <p className="text-sm text-gray-600 dark:text-gray-300 italic">"{description}"</p>
       </div>
 
-      <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-end">
-       
-        <button onClick={handleNavigate} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-2 md:px-4 md:text-sm cursor-pointer rounded-lg transition">
-          <Pencil size={12} className="md:w-4 md:h-4" /> Update
-        </button>
-        
-        <button className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-2 md:px-4  md:text-sm cursor-pointer rounded-lg transition">
-          <Trash2 size={12} className="md:w-4 md:h-4" /> Delete
-        </button>
+      <div className="mt-6 flex justify-end">
         <button className="flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white text-xs px-3 py-2 md:px-4  md:text-sm cursor-pointer rounded-lg transition">
           <BiLike className="md:w-4 md:h-4" /> Like
         </button>
