@@ -6,7 +6,7 @@ const Featured = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://roomatch-server.vercel.app/roommatessix')
+    fetch('http://localhost:3000/roommatessix')
       .then((res) => res.json())
       .then((data) => {
         setRoomMates(data);

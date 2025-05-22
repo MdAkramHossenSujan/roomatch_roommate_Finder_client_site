@@ -11,14 +11,11 @@ import {
 } from 'react-icons/fa6';
 import toast from 'react-hot-toast';
 import './Header.css';
-import { FaHome, FaSignInAlt } from 'react-icons/fa';
+import { FaHome, FaListAlt, FaPlusCircle, FaSignInAlt } from 'react-icons/fa';
 
 const Header = () => {
     const { toggleTheme, theme, user, logOut } = use(AuthContext);
     const [open, setOpen] = useState(false);
-    const [dropDown, setDropDown] = useState(false);
-    const sidebarRef = useRef();
-
     const handleSignOut = () => {
         logOut()
             .then(() => toast.success('Logged Out Successfully'))
@@ -50,19 +47,21 @@ const Header = () => {
                 </li>
 
                 <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
-                    <FaPlus />
-                    <NavLink to="/addlisting" onClick={() => setOpen(false)}>Add RoomMate</NavLink>
-                </li>
+                        <FaPlus />
+                        <NavLink to="/addlisting" onClick={() => setOpen(false)}>Add RoomMate</NavLink>
+                    </li>
 
                 <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
                     <FaUsers />
                     <NavLink to="/browselisting" onClick={() => setOpen(false)}>Browse Roommates</NavLink>
                 </li>
 
-                <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
+               {
+                user &&  <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
                     <FaFolderOpen />
                     <NavLink to="/mylisting" onClick={() => setOpen(false)}>Added By Me</NavLink>
                 </li>
+               }
 
                 {!user && (
                     <div className="mt-2">
@@ -98,24 +97,73 @@ const Header = () => {
             </div>
 
             {/* Desktop Menu */}
-            <ul className="lg:flex hidden gap-5 text-gray-500 text-lg font-semibold">
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/addlisting">Add RoomMate</NavLink></li>
-                <div onClick={() => setDropDown(!dropDown)} className="relative cursor-pointer">
-                    <div className="flex items-center">
-                        Browse {dropDown ? <FaAngleUp /> : <FaAngleDown />}
-                    </div>
-                    {dropDown && (
-                        <ul className="absolute bg-white rounded shadow mt-2 z-10 p-2 w-48">
-                            <li><NavLink to="/browselisting">Browse Roommates</NavLink></li>
-                            <li><NavLink to="/mylisting">Added By Me</NavLink></li>
-                        </ul>
-                    )}
+            <ul className="lg:flex hidden gap-6 text-gray-700 dark:text-gray-200 text-base font-semibold items-center">
+
+                <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
+                    <FaHome />
+                    <NavLink to="/">Home</NavLink>
+                </li>
+
+                <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
+                    <FaPlusCircle />
+                    <NavLink to="/addlisting">Add RoomMate</NavLink>
+                </li>
+                {/* Dropdown */}
+                <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+                    <label
+                        tabIndex={0}
+                        className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors duration-300 font-semibold"
+                    >
+                        <FaUsers className="text-lg" />
+                        <span>Browse</span>
+                        <FaAngleDown className="text-sm" />
+                    </label>
+
+                    <ul
+                        tabIndex={0}
+                        className="dropdown-content p-4 shadow-lg bg-white dark:bg-gray-800 rounded-lg w-56 text-gray-700 dark:text-gray-200"
+                    >
+                        <li className="flex items-center gap-3 px-3 py- rounded-md cursor-pointer transition-colors duration-100">
+                            <FaListAlt className="text-blue-600 dark:text-blue-400 text-lg" />
+                            <NavLink
+                                to="/browselisting"
+                                className="w-full text-sm font-medium"
+                            >
+                                Browse Roommates
+                            </NavLink>
+                        </li>
+
+                        {user && (
+                            <li className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900 cursor-pointer transition-colors duration-100">
+                                <FaUserPlus className="text-blue-600 dark:text-blue-400 text-lg" />
+                                <NavLink
+                                    to={`/mylisting/${user.email}`}
+                                    className="w-full text-sm font-medium"
+                                >
+                                    Added By Me
+                                </NavLink>
+                            </li>
+                        )}
+                    </ul>
                 </div>
+
+
+
+
+                {/* Auth Links */}
                 {!user && (
-                    <div className="flex gap-2">
-                        <Link to="/auth/register" className="text-red-400">Sign Up</Link>
-                        <Link to="/auth/signin" className="text-red-400 border rounded-2xl px-2">Log In</Link>
+                    <div className="flex gap-3 items-center">
+                        <Link to="/auth/register" className="flex items-center gap-1 text-red-500 hover:text-red-600 transition-all">
+                            <FaUserPlus />
+                            Sign Up
+                        </Link>
+                        <Link
+                            to="/auth/signin"
+                            className="flex items-center gap-1 text-white bg-red-400 hover:bg-red-500 px-4 py-1 rounded-full shadow"
+                        >
+                            <FaSignInAlt />
+                            Log In
+                        </Link>
                     </div>
                 )}
             </ul>

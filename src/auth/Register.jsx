@@ -46,7 +46,7 @@ const Register = () => {
                     .then(() => {
                         setUser({ ...user, displayName: name, photoURL: photo })
                         toast.success('Created User Successfully')
-                        navigate('/user/profile')
+                        navigate('/')
                     }).catch(error => {
 
                     })
@@ -58,7 +58,7 @@ const Register = () => {
         googleSignIn()
             .then(result => {
                 toast.success('Logged In Successfully')
-                navigate('/user/profile')
+                navigate('/')
             })
             .catch(error => {
             })
