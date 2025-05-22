@@ -10,7 +10,7 @@ const ListingCard = () => {
         const data = Object.fromEntries(formData.entries());
         console.log('Coffee Data:', data);
         e.target.reset();
-        fetch('https://roomatch-server.vercel.app/roommatessix', {
+        fetch('https://roomatch-server.vercel.app/roommates', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
