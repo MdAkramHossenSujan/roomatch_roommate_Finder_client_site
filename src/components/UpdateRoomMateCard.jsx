@@ -10,7 +10,7 @@ const UpdateRoomMateCard = ({data}) => {
         const updatedData = Object.fromEntries(formData.entries());
         console.log('Coffee Data:', data);
         e.target.reset();
-        fetch(`http://localhost:3000/roommates/${data._id}`,{
+        fetch(`https://roomatch-server.vercel.app/roommates/${data._id}`,{
             method:"PUT",
            headers: {
                 "Content-Type": "application/json",

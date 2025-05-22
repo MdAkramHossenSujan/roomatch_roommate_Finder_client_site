@@ -31,7 +31,7 @@ const MyListings = () => {
             draggable: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/roommates/${_id}`, {
+                fetch(`https://roomatch-server.vercel.app/roommates/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

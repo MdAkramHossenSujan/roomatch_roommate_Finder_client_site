@@ -23,7 +23,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:3000/city')
+                loader: () => fetch('https://roomatch-server.vercel.app/city'),
+                hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+                    <span className="loading loading-spinner text-success"></span>
+                </div>
             },
             {
                 path: '/addlisting',
@@ -34,28 +37,40 @@ export const router = createBrowserRouter([
             {
                 path: '/browselisting',
                 element: <BrowserListing></BrowserListing>,
-                loader:()=>fetch('http://localhost:3000/roommates')
+                loader: () => fetch('https://roomatch-server.vercel.app/roommates'),
+                hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+                    <span className="loading loading-spinner text-success"></span>
+                </div>
             },
             {
                 path: '/browselisting/:id',
-                loader:({params})=>fetch(`http://localhost:3000/roommates/${params.id}`),
-                element:<PrivateRoute>
+                loader: ({ params }) => fetch(`https://roomatch-server.vercel.app/roommates/${params.id}`),
+                element: <PrivateRoute>
                     <RoomMateDetails></RoomMateDetails>
-                </PrivateRoute>
+                </PrivateRoute>,
+                hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+                    <span className="loading loading-spinner text-success"></span>
+                </div>
             },
-                    {
+            {
                 path: '/updatelisting/:id',
-                loader:({params})=>fetch(`http://localhost:3000/roommates/${params.id}`),
-                element:<PrivateRoute>
-                   <UpdateRoomMate></UpdateRoomMate>
-                </PrivateRoute>
+                loader: ({ params }) => fetch(`https://roomatch-server.vercel.app/roommates/${params.id}`),
+                element: <PrivateRoute>
+                    <UpdateRoomMate></UpdateRoomMate>
+                </PrivateRoute>,
+                hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+                    <span className="loading loading-spinner text-success"></span>
+                </div>
             },
             {
                 path: '/mylisting/:email',
-                loader:({params})=>fetch(`http://localhost:3000/roommates/user/${params.email}`),
+                loader: ({ params }) => fetch(`https://roomatch-server.vercel.app/roommates/user/${params.email}`),
                 element: <PrivateRoute>
                     <MyListings></MyListings>
-                </PrivateRoute>
+                </PrivateRoute>,
+                hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+                    <span className="loading loading-spinner text-success"></span>
+                </div>
             },
             {
                 path: '/auth',
