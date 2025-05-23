@@ -13,7 +13,7 @@ const RoomMateDetails = () => {
             <div>
               <Header></Header>
             </div>
-            <div className='my-10 md:my-20'>
+            <div className='my-10 py-18 md:my-18'>
                <DetailedCard data={data}></DetailedCard>
             </div>
             <div>

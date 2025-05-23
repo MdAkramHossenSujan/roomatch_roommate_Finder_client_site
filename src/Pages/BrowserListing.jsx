@@ -13,7 +13,7 @@ const BrowserListing = () => {
             <div>
                 <Header />
             </div>
-            <div className='w-11/12 md:w-4/5 mx-auto my-10'>
+            <div className='w-11/12 md:w-4/5 mx-auto my-10 py-20'>
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}

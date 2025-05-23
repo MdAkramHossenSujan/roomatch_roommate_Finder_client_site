@@ -6,6 +6,7 @@ import {
   Eye
 } from 'lucide-react';
 import { Link } from 'react-router';
+import { format } from 'date-fns';
 
 const RoommateCard = ({ roommate }) => {
   const {
@@ -18,15 +19,20 @@ const RoommateCard = ({ roommate }) => {
     roomType,
     _id
   } = roommate;
-
-  const formattedDate = createdAt
-    ? new Date(createdAt.trim()).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })
-    : 'Unknown';
-
+const handleClick=()=>{
+   fetch('http://localhost:3000/recents', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(roommate)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Posted Success', data)
+            })
+}
+const formattedDate = format(new Date(createdAt), 'PPPp');
   return (
     <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-2xl
       bg-gradient-to-br from-indigo-50 via-white to-gray-50 dark:bg-gradient-to-tr dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-6">
@@ -62,8 +68,8 @@ const RoommateCard = ({ roommate }) => {
       </div>
 
       <div data-tip="See More" className="absolute bottom-5 right-5 group">
-        <Link to={`/browselisting/${_id}`}>
-          <div className="flex items-center justify-center w-11 h-11 rounded-full bg-indigo-100 hover:bg-indigo-200 dark:bg-indigo-700 dark:hover:bg-indigo-600 shadow-md hover:shadow-lg transition cursor-pointer">
+        <Link  to={`/browselisting/${_id}`}>
+          <div onClick={handleClick} className="flex items-center justify-center w-11 h-11 rounded-full bg-indigo-100 hover:bg-indigo-200 dark:bg-indigo-700 dark:hover:bg-indigo-600 shadow-md hover:shadow-lg transition cursor-pointer">
             <Eye className="text-indigo-700 dark:text-white w-5 h-5" />
           </div>
         </Link>

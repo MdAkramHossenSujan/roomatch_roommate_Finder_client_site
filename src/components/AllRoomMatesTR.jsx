@@ -31,7 +31,7 @@ const AllRoomMatesTR = ({ roomMate }) => {
   <td className="md:px-4 lg:px-8 md:py-4">
     <div className="flex flex-col sm:flex-row items-center gap-3">
       <div className="avatar">
-        <div className="mask mask-squircle w-16 h-16">
+        <div className="mask mask-squircle transition-transform hover:scale-105 w-16 h-16">
           <img src={photo} alt="Roommate Avatar" />
         </div>
       </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Bannercard = ({ info }) => {
     return (
-        <div
+        <div className='h-100 xl:h-[60vh]'
             style={{
                 position: 'relative',
                 overflow: 'hidden',
@@ -23,7 +23,7 @@ const Bannercard = ({ info }) => {
                 }}
             />
             <div
-                className='z-10 relative px-5 md:p-10 lg:p-20 xl:p-28 text-white'
+                className='z-10 relative px-5 md:p-10 lg:p-20 xl:p-36 text-white'
             >
                 <h1 className='text-3xl pt-18 lg:pt-0 lg:text-8xl poppins-regular md:text-5xl'>{info.country}</h1>
                 <p className='xl:w-1/2 text-xs lg:text-lg mt-4 w-2/3'>{info.comment}</p>

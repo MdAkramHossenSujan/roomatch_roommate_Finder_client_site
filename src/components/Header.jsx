@@ -8,6 +8,7 @@ import {
     FaUsers,
     FaFolderOpen,
     FaUserPlus,
+    FaBlog,
 } from 'react-icons/fa6';
 import toast from 'react-hot-toast';
 import './Header.css';
@@ -30,7 +31,13 @@ const Header = () => {
                     } bg-gray-800 dark:bg-white text-white dark:text-green-900 p-6 transition-transform duration-300 ease-in-out shadow-xl rounded-r-3xl`}
             >
                 <div className="flex flex-col items-center mb-8">
-                    <p className="text-4xl font-bold tracking-wide text-green-400 dark:text-green-700">RooMatch</p>
+                    <div className='flex gap-2'>
+                        <p className="text-4xl font-bold tracking-wide text-green-400 dark:text-green-700">RooMatch</p>
+                        <label onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
+                            <Sun size={30} className="swap-on text-yellow-500" />
+                            <Moon size={30} className="swap-off" />
+                        </label>
+                    </div>
                     {user && (
                         <img
                             onClick={handleSignOut}
@@ -47,21 +54,25 @@ const Header = () => {
                 </li>
 
                 <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
-                        <FaPlus />
-                        <NavLink to="/addlisting" onClick={() => setOpen(false)}>Add RoomMate</NavLink>
-                    </li>
+                    <FaPlus />
+                    <NavLink to="/addlisting" onClick={() => setOpen(false)}>Add RoomMate</NavLink>
+                </li>
 
                 <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
                     <FaUsers />
                     <NavLink to="/browselisting" onClick={() => setOpen(false)}>Browse Roommates</NavLink>
                 </li>
 
-               {
-                user &&  <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
-                    <FaFolderOpen />
-                    <NavLink to={`/mylisting/${user.email}`} onClick={() => setOpen(false)}>Added By Me</NavLink>
+                {
+                    user && <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
+                        <FaFolderOpen />
+                        <NavLink to={`/mylisting/${user.email}`} onClick={() => setOpen(false)}>Added By Me</NavLink>
+                    </li>
+                }
+                <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
+                    <FaBlog />
+                    <NavLink to="/userBlog&reviews" onClick={() => setOpen(false)}>Blog & Reviews</NavLink>
                 </li>
-               }
 
                 {!user && (
                     <div className="mt-2">
@@ -82,7 +93,9 @@ const Header = () => {
     );
 
     return (
-        <div className="flex justify-between w-11/12 py-5 text-xl mx-auto max-h-screen poppins-regular">
+        <div  className="fixed top-0 left-0 right-0  z-50 bg-white dark:bg-gray-900 shadow-md w-full">
+
+            <div className="flex justify-between w-11/12 py-5 text-xl mx-auto max-h-screen poppins-regular">
             {/* Mobile Menu Button */}
             <span onClick={() => setOpen(!open)} className="flex lg:hidden gap-4">
                 {open ? <X size={30} /> : <Menu size={30} />}
@@ -107,6 +120,10 @@ const Header = () => {
                 <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
                     <FaPlusCircle />
                     <NavLink to="/addlisting">Add RoomMate</NavLink>
+                </li>
+                <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
+                    <FaBlog />
+                    <NavLink to="/userBlog&reviews">Blog & Review</NavLink>
                 </li>
                 {/* Dropdown */}
                 <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
@@ -169,7 +186,7 @@ const Header = () => {
             </ul>
 
             {/* Theme Toggle & User */}
-            <div className="flex gap-5 items-center">
+            <div className="lg:flex hidden gap-5 items-center">
                 {user && (
                     <img
                         onClick={handleSignOut}
@@ -178,11 +195,12 @@ const Header = () => {
                         alt="User"
                     />
                 )}
-                <label onClick={toggleTheme} className={`cursor-pointer swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
+                <label onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
                     <Sun size={30} className="swap-on text-yellow-500" />
                     <Moon size={30} className="swap-off" />
                 </label>
             </div>
+        </div>
         </div>
     );
 };

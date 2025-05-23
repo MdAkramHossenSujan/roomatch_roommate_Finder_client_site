@@ -18,7 +18,7 @@ const Banner = ({webInfo}) => {
     return (
         <>
         
-         <div className=''>
+         <div>
             <Swiper
         spaceBetween={30}
         centeredSlides={true}

@@ -9,7 +9,7 @@ const AddListing = () => {
            <div>
           <Header/>
            </div>
-           <div>
+           <div className="pt-18 lg:pt-20">
             <ListingCard/>
            </div>
            <div>

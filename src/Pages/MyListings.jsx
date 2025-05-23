@@ -31,7 +31,7 @@ const MyListings = () => {
             draggable: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://roomatch-server.vercel.app/roommates/${_id}`, {
+                fetch(`http://localhost:3000/roommates/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -57,7 +57,7 @@ const MyListings = () => {
                 <Header />
             </div>
             <div>
-                <div className='w-11/12 md:w-4/5 mx-auto my-10'>
+                <div className='w-11/12 md:w-4/5 mx-auto my-10 py-20'>
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}
@@ -90,7 +90,7 @@ const MyListings = () => {
                                             <td className="py-4 px-2">
                                                 <div className="flex flex-col items-center text-center gap-2">
                                                     <div className="avatar">
-                                                        <div className="mask mask-squircle w-16 h-18">
+                                                        <div className="mask mask-squircle transition-transform hover:scale-105 w-16 h-18">
                                                             <img src={photo} alt="Roommate Avatar" />
                                                         </div>
                                                     </div>
