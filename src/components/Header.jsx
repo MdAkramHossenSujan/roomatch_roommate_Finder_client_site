@@ -10,6 +10,7 @@ import {
     FaUserPlus,
     FaBlog,
 } from 'react-icons/fa6';
+import { Tooltip } from 'react-tooltip'
 import toast from 'react-hot-toast';
 import './Header.css';
 import { FaHome, FaListAlt, FaPlusCircle, FaSignInAlt } from 'react-icons/fa';
@@ -22,7 +23,7 @@ const Header = () => {
             .then(() => toast.success('Logged Out Successfully'))
             .catch(() => { });
     };
-
+    console.log(user)
     const Sidebar = (
         <>
             <div className="fixed inset-0 bg-opacity-80 z-40" onClick={() => setOpen(false)} />
@@ -39,12 +40,18 @@ const Header = () => {
                         </label>
                     </div>
                     {user && (
-                        <img
-                            onClick={handleSignOut}
-                            className="w-20 h-20 rounded-full mt-4 border-4 border-green-400 dark:border-green-700 shadow-lg cursor-pointer transition-transform hover:scale-105"
-                            src={user?.photoURL || 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}
-                            alt="User"
-                        />
+                        <div>
+                            <img
+                                data-tooltip-id="view-tooltip"
+                                data-tooltip-content={user.displayName}
+                                data-tooltip-place="top"
+                                onClick={handleSignOut}
+                                className="w-20 h-20 rounded-full mt-4 border-4 border-green-400 dark:border-green-700 shadow-lg cursor-pointer transition-transform hover:scale-105"
+                                src={user?.photoURL || 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}
+                                alt="User"
+                            />
+                            <Tooltip id="view-tooltip" />
+                        </div>
                     )}
                 </div>
 
@@ -93,114 +100,121 @@ const Header = () => {
     );
 
     return (
-        <div  className="fixed top-0 left-0 right-0  z-50 bg-white dark:bg-gray-900 shadow-md w-full">
+        <div className="fixed top-0 left-0 right-0  z-50 bg-white dark:bg-gray-900 shadow-md w-full">
 
             <div className="flex justify-between w-11/12 py-5 text-xl mx-auto max-h-screen poppins-regular">
-            {/* Mobile Menu Button */}
-            <span onClick={() => setOpen(!open)} className="flex lg:hidden gap-4">
-                {open ? <X size={30} /> : <Menu size={30} />}
-            </span>
+                {/* Mobile Menu Button */}
+                <span onClick={() => setOpen(!open)} className="flex lg:hidden gap-4">
+                    {open ? <X size={30} /> : <Menu size={30} />}
+                </span>
 
-            {/* Sidebar for mobile */}
-            {open && Sidebar}
+                {/* Sidebar for mobile */}
+                {open && Sidebar}
 
-            {/* Logo */}
-            <div className="lg:flex gap-2">
-                <p className="hidden lg:block text-4xl font-bold">RooMatch</p>
-            </div>
-
-            {/* Desktop Menu */}
-            <ul className="lg:flex hidden gap-6 text-gray-700 dark:text-gray-200 text-base font-semibold items-center">
-
-                <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
-                    <FaHome />
-                    <NavLink to="/">Home</NavLink>
-                </li>
-
-                <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
-                    <FaPlusCircle />
-                    <NavLink to="/addlisting">Add RoomMate</NavLink>
-                </li>
-                <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
-                    <FaBlog />
-                    <NavLink to="/userBlog&reviews">Blog & Review</NavLink>
-                </li>
-                {/* Dropdown */}
-                <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
-                    <label
-                        tabIndex={0}
-                        className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors duration-300 font-semibold"
-                    >
-                        <FaUsers className="text-lg" />
-                        <span>Browse</span>
-                        <FaAngleDown className="text-sm" />
-                    </label>
-
-                    <ul
-                        tabIndex={0}
-                        className="dropdown-content p-4 shadow-lg bg-white dark:bg-gray-800 rounded-lg w-56 text-gray-700 dark:text-gray-200"
-                    >
-                        <li className="flex items-center gap-3 px-3 py- rounded-md cursor-pointer transition-colors duration-100">
-                            <FaListAlt className="text-blue-600 dark:text-blue-400 text-lg" />
-                            <NavLink
-                                to="/browselisting"
-                                className="w-full text-sm font-medium"
-                            >
-                                Browse Roommates
-                            </NavLink>
-                        </li>
-
-                        {user && (
-                            <li className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900 cursor-pointer transition-colors duration-100">
-                                <FaUserPlus className="text-blue-600 dark:text-blue-400 text-lg" />
-                                <NavLink
-                                    to={`/mylisting/${user.email}`}
-                                    className="w-full text-sm font-medium"
-                                >
-                                    Added By Me
-                                </NavLink>
-                            </li>
-                        )}
-                    </ul>
+                {/* Logo */}
+                <div className="lg:flex gap-2">
+                    <p className="hidden lg:block text-4xl font-bold">RooMatch</p>
                 </div>
 
+                {/* Desktop Menu */}
+                <ul className="lg:flex hidden gap-6 text-gray-700 dark:text-gray-200 text-base font-semibold items-center">
 
+                    <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
+                        <FaHome />
+                        <NavLink to="/">Home</NavLink>
+                    </li>
 
-
-                {/* Auth Links */}
-                {!user && (
-                    <div className="flex gap-3 items-center">
-                        <Link to="/auth/register" className="flex items-center gap-1 text-red-500 hover:text-red-600 transition-all">
-                            <FaUserPlus />
-                            Sign Up
-                        </Link>
-                        <Link
-                            to="/auth/signin"
-                            className="flex items-center gap-1 text-white bg-red-400 hover:bg-red-500 px-4 py-1 rounded-full shadow"
+                    <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
+                        <FaPlusCircle />
+                        <NavLink to="/addlisting">Add RoomMate</NavLink>
+                    </li>
+                    <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
+                        <FaBlog />
+                        <NavLink to="/userBlog&reviews">Blog & Review</NavLink>
+                    </li>
+                    {/* Dropdown */}
+                    <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+                        <label
+                            tabIndex={0}
+                            className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors duration-300 font-semibold"
                         >
-                            <FaSignInAlt />
-                            Log In
-                        </Link>
-                    </div>
-                )}
-            </ul>
+                            <FaUsers className="text-lg" />
+                            <span>Browse</span>
+                            <FaAngleDown className="text-sm" />
+                        </label>
 
-            {/* Theme Toggle & User */}
-            <div className="lg:flex hidden gap-5 items-center">
-                {user && (
-                    <img
-                        onClick={handleSignOut}
-                        className="w-10 h-10 rounded-full cursor-pointer"
-                        src={user?.photoURL || 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}
-                        alt="User"
-                    />
-                )}
-                <label onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
-                    <Sun size={30} className="swap-on text-yellow-500" />
-                    <Moon size={30} className="swap-off" />
-                </label>
+                        <ul
+                            tabIndex={0}
+                            className="dropdown-content p-4 shadow-lg bg-white dark:bg-gray-800 rounded-lg w-56 text-gray-700 dark:text-gray-200"
+                        >
+                            <li className="flex items-center gap-3 px-3 py- rounded-md cursor-pointer transition-colors duration-100">
+                                <FaListAlt className="text-blue-600 dark:text-blue-400 text-lg" />
+                                <NavLink
+                                    to="/browselisting"
+                                    className="w-full text-sm font-medium"
+                                >
+                                    Browse Roommates
+                                </NavLink>
+                            </li>
+
+                            {user && (
+                                <li className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900 cursor-pointer transition-colors duration-100">
+                                    <FaUserPlus className="text-blue-600 dark:text-blue-400 text-lg" />
+                                    <NavLink
+                                        to={`/mylisting/${user.email}`}
+                                        className="w-full text-sm font-medium"
+                                    >
+                                        Added By Me
+                                    </NavLink>
+                                </li>
+                            )}
+                        </ul>
+                    </div>
+
+
+
+
+                    {/* Auth Links */}
+                    {!user && (
+                        <div className="flex gap-3 items-center">
+                            <Link to="/auth/register" className="flex items-center gap-1 text-red-500 hover:text-red-600 transition-all">
+                                <FaUserPlus />
+                                Sign Up
+                            </Link>
+                            <Link
+                                to="/auth/signin"
+                                className="flex items-center gap-1 text-white bg-red-400 hover:bg-red-500 px-4 py-1 rounded-full shadow"
+                            >
+                                <FaSignInAlt />
+                                Log In
+                            </Link>
+                        </div>
+                    )}
+                </ul>
+
+                {/* Theme Toggle & User */}
+                <div className="lg:flex hidden gap-5 items-center">
+                    {user && (
+                        <img
+                            data-tooltip-id="view-tooltip"
+                            data-tooltip-content={user.displayName}
+                            data-tooltip-place="top"
+                            onClick={handleSignOut}
+                            className="w-10 h-10 rounded-full cursor-pointer"
+                            src={user?.photoURL || 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}
+                            alt="User"
+                        />
+                    )}
+                    <label
+                        data-tooltip-id="view-tooltip"
+                        data-tooltip-content={theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+                        data-tooltip-place="top" onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
+                        <Sun size={30} className="swap-on text-yellow-500" />
+                        <Moon size={30} className="swap-off" />
+                    </label>
+                    <Tooltip id="view-tooltip" />
+                </div>
             </div>
-        </div>
         </div>
     );
 };

@@ -1,0 +1,10 @@
+.five-animation {
+  width: 50%;
+  height: 50%;
+}
+
+@media (min-width: 1280px) {
+  .five-animation {
+    width: 30%;
+  }
+}

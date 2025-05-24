@@ -30,29 +30,29 @@ const DetailedCard = ({ data }) => {
     objectives,
     likes
   } = data;
-  console.log(user.email,userEmail,data)
+  console.log(user.email, userEmail, data)
   const [hasLiked, setHasLiked] = useState(likes);
   console.log(data._id)
   const formattedDate = format(new Date(createdAt), 'PPPp');
   const isAvailable = availability?.toLowerCase() === 'available';
   const handleLike = () => {
     setState(true)
-   if(user.email!==userEmail){
-     fetch(`http://localhost:3000/roommates/${_id}/like`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ userEmail: user.email }),
-    })
-      .then(res => res.json())
-      .then(data => {
-        setHasLiked(data.likes)
+    if (user.email !== userEmail) {
+      fetch(`http://localhost:3000/roommates/${_id}/like`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userEmail: user.email }),
       })
-      .catch(err => {
-        console.error("Failed to update likes:", err);
-      });
-   }
+        .then(res => res.json())
+        .then(data => {
+          setHasLiked(data.likes)
+        })
+        .catch(err => {
+          console.error("Failed to update likes:", err);
+        });
+    }
   };
   return (
     <div className="bg-white w-11/12 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-3xl shadow-xl max-w-3xl mx-auto p-8 border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300">
@@ -77,7 +77,7 @@ const DetailedCard = ({ data }) => {
         <img
           src={photo}
           alt={userName}
-          className="w-72 md:w-96 transition-transform hover:scale-105 h-72 md:h-96 lg:h-[648px] lg:w-[648px]  rounded-full object-cover shadow-lg border-4 border-indigo-300 dark:border-indigo-600 mb-4"
+          className="w-64 md:w-96 transition-transform hover:scale-90 h-64 md:h-96 lg:h-[540px] lg:w-[540px]  rounded-full object-cover shadow-lg border-4 border-indigo-300 dark:border-indigo-600 mb-4"
         />
         <p className="text-sm text-gray-400 font-semibold uppercase tracking-wide">Posted by</p>
         <h2 className="text-2xl font-bold text-gray-800 dark:text-white">{userName}</h2>

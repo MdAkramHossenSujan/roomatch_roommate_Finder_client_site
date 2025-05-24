@@ -15,24 +15,33 @@ const Comments = () => {
                 setComments(data)
             })
     }, [setLoader])
-    console.log(comments)
     const onlyComment = comments.slice(0, 3)
     return (
-        <div className='w-5/6 lg:w-4/5 mx-auto my-14'>
-            <div className='max-w-7xl mx-auto border rounded-3xl p-8 xl:p-18'>
+        <div className='max-w-7xl px-8 mx-auto my-14'>
+            <div className=' mx-auto border rounded-3xl p-8 xl:p-12'>
                 <h1 className='text-3xl font-semibold'>Comments</h1>
                 {
                     (state ? comments : onlyComment).map((comment, index) => {
                         {
                             return (
-                                <div key={index} className="flex items-start space-x-4 p-4 rounded-xl">
-                                    <div className="w-10 h-10 transition-transform hover:scale-110">
-                                        <img src={comment.image} alt="Profile" className="w-full h-full border-2 border-orange-800 rounded-full dark:border-white object-cover" />
+                                <div key={index} className="items-start space-x-4 p-4 rounded-xl">
+                                    <div className='flex gap-2'>
+                                        <div className="w-10 my-auto h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 transition-transform hover:scale-110">
+                                            <img
+                                                src={comment.image}
+                                                alt="Profile"
+                                                className="w-full h-full border-2 border-orange-800 rounded-full dark:border-white object-cover"
+                                            />
+                                        </div>
+                                        <div className='my-auto'>
+                                            <div className="font-semibold">{comment.title}</div>
+                                            <div className="text-xs text-gray-400">{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</div>
+                                        </div>
                                     </div>
+
                                     <div>
-                                        <div className="font-semibold">{comment.title}</div>
-                                        <div className="text-sm text-gray-400">{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</div>
-                                        <div className="mt-1">{comment.comment}</div>
+
+                                        <div className="mt-3 text-xs">{comment.comment}</div>
                                     </div>
                                     <button>
 

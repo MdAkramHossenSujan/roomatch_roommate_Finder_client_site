@@ -42,7 +42,7 @@ const BlogSection = () => {
                         {
                             blogs.map((post, idx) => {
                                 const { user } = use(AuthContext);
-                                const { photo, title, blog, createdAt } = post;
+                                const { photo, title, blog, createdAt,image } = post;
                                 const formattedDate = format(new Date(createdAt), 'PPPp');
 
                                 const words = blog?.split(' ');
@@ -54,7 +54,7 @@ const BlogSection = () => {
                                         {/* Top section: user image and date */}
                                         <div className="flex items-center gap-3 mb-3">
                                             <img
-                                                src={user?.photoURL}
+                                                src={image}
                                                 alt="User"
                                                 className="w-8 h-8 rounded-full object-cover border border-gray-300 dark:border-gray-600"
                                             />

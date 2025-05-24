@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 
 const ListingCard = () => {
     const { user } = use(AuthContext)
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);

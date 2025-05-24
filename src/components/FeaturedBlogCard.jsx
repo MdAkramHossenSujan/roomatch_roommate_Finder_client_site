@@ -14,7 +14,7 @@ const FeaturedBlogCard = () => {
         .catch(err => console.error('Fetching error:', err));
     };
 
-    const intervalId = setInterval(fetchBlogs,1000);
+    const intervalId = setInterval(fetchBlogs, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -22,16 +22,16 @@ const FeaturedBlogCard = () => {
     <div>
       {
         latesBlog.map((latestBlog, index) => {
-          const { photo, title, blog, createdAt } = latestBlog;
+          const { photo, title, blog, createdAt,image } = latestBlog;
           const formattedDate = format(new Date(createdAt), 'PPPp');
-const words = blog?.split(' ');
-                                const preview = words?.slice(0, 200).join(' ') + (words?.length > 200 ? '...' : '');
+          const words = blog?.split(' ');
+          const preview = words?.slice(0, 200).join(' ') + (words?.length > 200 ? '...' : '');
           return (
             <div key={index} className="bg-white dark:bg-gray-900 shadow-md rounded-xl p-6 flex flex-col md:flex-row gap-6">
               <div className="flex-1 flex flex-col">
                 <div className="flex items-center gap-3 mb-2">
                   <img
-                    src={user?.photoURL}
+                    src={image}
                     alt="User Avatar"
                     className="w-12 h-12 rounded-full border-2 border-black-600 dark:border-white"
                   />
@@ -49,11 +49,11 @@ const words = blog?.split(' ');
               </div>
 
               {/* Right image */}
-              <div className="w-full max-h-96 md:w-1/3">
+              <div className="w-full md:w-1/3">
                 <img
                   src={photo}
                   alt="Featured Post"
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-full max-h-96 object-cover rounded-lg"
                 />
               </div>
             </div>
