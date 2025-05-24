@@ -36,7 +36,7 @@ const Header = () => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
-    console.log(user)
+    // console.log(user)
     const Sidebar = (
         <>
             <div className="fixed inset-0 bg-opacity-80 z-40" onClick={() => setOpen(false)} />

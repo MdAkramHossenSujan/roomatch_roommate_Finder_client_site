@@ -8,7 +8,7 @@ const FeaturedBlogCard = () => {
   const [latesBlog, setLatestBlog] = useState([]);
   useEffect(() => {
     const fetchBlogs = () => {
-      fetch('http://localhost:3000/latestblog')
+      fetch('https://roomatch-server.vercel.app/latestblog')
         .then(res => res.json())
         .then(data => setLatestBlog(data))
         .catch(err => console.error('Fetching error:', err));

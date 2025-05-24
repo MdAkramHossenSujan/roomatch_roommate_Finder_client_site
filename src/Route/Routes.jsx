@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:3000/city'),
+                loader: () => fetch('https://roomatch-server.vercel.app/city'),
                 hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
                     <span className="loading loading-spinner text-success"></span>
                 </div>
@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
             {
                 path: '/browselisting',
                 element: <BrowserListing></BrowserListing>,
-                loader: () => fetch('http://localhost:3000/roommates'),
+                loader: () => fetch('https://roomatch-server.vercel.app/roommates'),
                 hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
                     <span className="loading loading-spinner text-success"></span>
                 </div>
@@ -46,14 +46,14 @@ export const router = createBrowserRouter([
             {
                 path: '/userBlog&reviews',
                 element:<BlogSection></BlogSection>,
-                loader:()=>fetch('http://localhost:3000/blog'),
+                loader:()=>fetch('https://roomatch-server.vercel.app/blog'),
                 hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
                     <span className="loading loading-spinner text-success"></span>
                 </div>
             },
             {
                 path: '/browselisting/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/roommates/${params.id}`),
+                loader: ({ params }) => fetch(`https://roomatch-server.vercel.app/roommates/${params.id}`),
                 element: <PrivateRoute>
                     <RoomMateDetails></RoomMateDetails>
                 </PrivateRoute>,
@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/updatelisting/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/roommates/${params.id}`),
+                loader: ({ params }) => fetch(`https://roomatch-server.vercel.app/roommates/${params.id}`),
                 element: <PrivateRoute>
                     <UpdateRoomMate></UpdateRoomMate>
                 </PrivateRoute>,
@@ -73,7 +73,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/mylisting/:email',
-                loader: ({ params }) => fetch(`http://localhost:3000/roommates/user/${params.email}`),
+                loader: ({ params }) => fetch(`https://roomatch-server.vercel.app/roommates/user/${params.email}`),
                 element: <PrivateRoute>
                     <MyListings></MyListings>
                 </PrivateRoute>,

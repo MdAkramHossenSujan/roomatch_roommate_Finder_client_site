@@ -9,9 +9,9 @@ const ListingCard = () => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
-        console.log('Coffee Data:', data);
+        // console.log('Coffee Data:', data);
         e.target.reset();
-        fetch('http://localhost:3000/roommates', {
+        fetch('https://roomatch-server.vercel.app/roommates', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -26,7 +26,7 @@ const ListingCard = () => {
                 }
             })
     }
-    console.log(user)
+    // console.log(user)
     return (
         <div
             style={{

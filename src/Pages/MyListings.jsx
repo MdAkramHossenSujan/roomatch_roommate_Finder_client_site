@@ -24,9 +24,9 @@ const MyListings = () => {
      useEffect(() => {
             document.title = `RoomMateData Listing Of ${user.displayName} | RooMatch`;
           }, [user.displayName ]);
-          console.log(user)
+        //   console.log(user)
     const handleDelete = (_id) => {
-        console.log(_id);
+        // console.log(_id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -38,7 +38,7 @@ const MyListings = () => {
             draggable: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/roommates/${_id}`, {
+                fetch(`https://roomatch-server.vercel.app/roommates/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

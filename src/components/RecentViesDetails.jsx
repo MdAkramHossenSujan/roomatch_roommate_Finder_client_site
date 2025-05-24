@@ -8,7 +8,7 @@ const RecentViewsDetails = () => {
     const [latestView, setLatestView] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/recents')
+        fetch('https://roomatch-server.vercel.app/recents')
             .then(res => res.json())
             .then(data => {
                 setLatestView(data);
@@ -18,7 +18,7 @@ const RecentViewsDetails = () => {
     }, [setLoader]);
 
     const handleDelete = (_id) => {
-        fetch(`http://localhost:3000/recents/${_id}`, {
+        fetch(`https://roomatch-server.vercel.app/recents/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

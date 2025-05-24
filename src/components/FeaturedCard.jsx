@@ -20,7 +20,7 @@ const RoommateCard = ({ roommate }) => {
     _id
   } = roommate;
   const handleClick = () => {
-    fetch('http://localhost:3000/recents', {
+    fetch('https://roomatch-server.vercel.app/recents', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

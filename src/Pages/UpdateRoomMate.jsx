@@ -9,7 +9,7 @@ const UpdateRoomMate = () => {
     useEffect(() => {
             document.title = `Updata The Data Of ${data.userName} | UpdateUser |RooMatch`;
           }, [data.userName]);
-          console.log(data)
+        //   console.log(data)
     return (
         <div>
             <div>

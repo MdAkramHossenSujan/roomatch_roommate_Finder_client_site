@@ -18,7 +18,7 @@ const CommentOrBlog = () => {
         }
         
         form.reset()
-        fetch('http://localhost:3000/blog', {
+        fetch('https://roomatch-server.vercel.app/blog', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -28,7 +28,7 @@ const CommentOrBlog = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('Added Blog', data)
+                // console.log('Added Blog', data)
                 if (data.insertedId) {
                     toast.success('Your Blog Added Successfully')
                 }
@@ -46,8 +46,8 @@ const CommentOrBlog = () => {
             image:image
         }
         form.reset()
-        console.log(oneComment)
-        fetch('http://localhost:3000/comment', {
+        // console.log(oneComment)
+        fetch('https://roomatch-server.vercel.app/comment', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -57,7 +57,7 @@ const CommentOrBlog = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('Added Blog', data)
+                // console.log('Added Blog', data)
                 if (data.insertedId) {
                     toast.success('Your Comment Added Successfully')
                 }

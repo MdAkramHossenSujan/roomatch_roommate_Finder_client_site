@@ -10,7 +10,7 @@ const RecentViews = () => {
     const [latestView, setLatestView] = useState([]);
     useEffect(() => {
 
-        fetch('http://localhost:3000/recents')
+        fetch('https://roomatch-server.vercel.app/recents')
             .then(res => res.json())
             .then(data => {
                 setLatestView(data)
@@ -18,12 +18,12 @@ const RecentViews = () => {
             })
             .catch(err => console.error('Fetching error:', err));
     }, [setLoader]);
-    console.log(latestView)
+    // console.log(latestView)
     const viewedData = latestView.slice(0, 4)
 
     const handleDelete = (_id) => {
-        console.log(_id)
-        fetch(`http://localhost:3000/recents/${_id}`, {
+        // console.log(_id)
+        fetch(`https://roomatch-server.vercel.app/recents/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

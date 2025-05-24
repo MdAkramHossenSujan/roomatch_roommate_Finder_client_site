@@ -18,7 +18,7 @@ const BlogSection = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const res = await fetch('http://localhost:3000/blog');
+                const res = await fetch('https://roomatch-server.vercel.app/blog');
                 const data = await res.json();
                 setblogs(data);
             } catch (err) {

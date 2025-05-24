@@ -8,7 +8,7 @@ const Comments = () => {
     const { setLoader, user } = use(AuthContext)
     const [state, setState] = useState(false)
     useEffect(() => {
-        fetch('http://localhost:3000/comment')
+        fetch('https://roomatch-server.vercel.app/comment')
             .then(res => res.json())
             .then(data => {
                 setLoader(false)

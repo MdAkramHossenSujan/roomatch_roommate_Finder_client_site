@@ -8,7 +8,7 @@ import RecentViewsDetails from '../components/RecentViesDetails';
 
 const RoomMateDetails = () => {
     const data = useLoaderData()
-    console.log(data)
+    // console.log(data)
     return (
         <div>
             <div>

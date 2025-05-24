@@ -33,15 +33,15 @@ const DetailedCard = ({ data }) => {
   useEffect(() => {
             document.title = `Details Data of ${userName} | ${userEmail} | RooMatch`;
           }, [userEmail,userName]);
-  console.log(user.email, userEmail, data)
+  // console.log(user.email, userEmail, data)
   const [hasLiked, setHasLiked] = useState(likes);
-  console.log(data._id)
+  // console.log(data._id)
   const formattedDate = format(new Date(createdAt), 'PPPp');
   const isAvailable = availability?.toLowerCase() === 'available';
   const handleLike = () => {
     setState(true)
     if (user.email !== userEmail) {
-      fetch(`http://localhost:3000/roommates/${_id}/like`, {
+      fetch(`https://roomatch-server.vercel.app/roommates/${_id}/like`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

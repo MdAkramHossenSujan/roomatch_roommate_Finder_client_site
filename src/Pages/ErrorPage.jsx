@@ -7,9 +7,9 @@ const error=useRouteError()
 
      useEffect(() => {
             document.title = `${error.data}`;
-          }, []);
+          }, [error.data]);
     
-    console.log(error.data)
+    // console.log(error.data)
     return (
         <div className='min-h-screen py-20'>
             <div>
