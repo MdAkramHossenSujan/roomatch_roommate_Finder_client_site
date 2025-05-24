@@ -48,7 +48,7 @@ const MyListings = () => {
                             setRoomMates(updatedCoffes)
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your Coffee has been deleted.",
+                                text: "The RoomMate data has been deleted.",
                                 icon: "success"
                             });
                         }
