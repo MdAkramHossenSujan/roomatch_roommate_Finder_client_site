@@ -63,22 +63,26 @@ const Header = () => {
                                 alt="User"
                             />
                             <Tooltip id="view-tooltip" />
+                            <div>
+                                <h2 className="mt-3 text-lg font-bold ">Hi, sujan!</h2>
+                            <p className="text-sm dark:text-gray-700">{user?.email}</p>
+                            </div>
                         </div>
                     )}
                 </div>
                 {
                     user && <div className="mt-6 flex gap-8 border-b border-gray-300 pb-2 mb-2">
-                   <Link to={'/userBlog&reviews'}>
-                    <button className="flex items-center gap-2 cursor-pointer text-[16px] font-medium w-full">
-                        <FaCommentDots className="text-blue-600" />
-                        Comment
-                    </button>
-                   </Link>
-                    <button onClick={handleSignOut} className="flex cursor-pointer items-center gap-1 font-medium w-full text-[16px] px-1">
-                        <FaSignOutAlt className="text-red-500" />
-                        Sign Out
-                    </button>
-                </div>
+                        <Link to={'/userBlog&reviews'}>
+                            <button className="flex items-center gap-2 cursor-pointer text-[16px] font-medium w-full">
+                                <FaCommentDots className="text-blue-600" />
+                                Comment
+                            </button>
+                        </Link>
+                        <button onClick={handleSignOut} className="flex cursor-pointer items-center gap-1 font-medium w-full text-[16px] px-1">
+                            <FaSignOutAlt className="text-red-500" />
+                            Sign Out
+                        </button>
+                    </div>
                 }
                 <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
                     <FaHome />
@@ -250,10 +254,10 @@ const Header = () => {
 
                                 <div className="mt-6 flex border-t border-gray-200 pt-4">
                                     <Link to={'/userBlog&reviews'}>
-                                    <button className="flex  items-center gap-3 text-[16px] font-medium w-full cursor-pointer px-3 py-2 rounded-md">
-                                        <FaCommentDots className="text-blue-600" />
-                                        Comment
-                                    </button>
+                                        <button className="flex  items-center gap-3 text-[16px] font-medium w-full cursor-pointer px-3 py-2 rounded-md">
+                                            <FaCommentDots className="text-blue-600" />
+                                            Comment
+                                        </button>
                                     </Link>
                                     <button onClick={handleSignOut} className="flex items-center gap-3 font-medium w-full text-[16px] cursor-pointer px-3 py-2 rounded-md">
                                         <FaSignOutAlt className="text-red-500" />

@@ -3,18 +3,22 @@ import FeaturedBlogCard from '../components/FeaturedBlogCard';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CommentOrBlog from '../components/CoomentorBlog';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useLocation } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 import { format } from 'date-fns';
 import { MdOutlineDateRange } from 'react-icons/md';
 
 
 const BlogSection = () => {
+    const { pathname } = useLocation();
     useEffect(() => {
                     document.title = `Blog-Create And View Blog | RooMatch`;
                   }, []);
     const posts = useLoaderData()
     const [blogs, setblogs] = useState(posts)
+     useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
     useEffect(() => {
         const fetchBlogs = async () => {
             try {

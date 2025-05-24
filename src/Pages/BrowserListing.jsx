@@ -4,14 +4,18 @@ import Footer from '../components/Footer';
 
 import AllRoomMatesTR from '../components/AllRoomMatesTR';
 import { AuthContext } from '../Provider/AuthProvider';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useLocation } from 'react-router';
 import Six from '../Animation/Six';
 
 const BrowserListing = () => {
+    const { pathname } = useLocation();
     useEffect(() => {
                     document.title = `Browse-And-Explore RoomMates Posts | RooMatch`;
                   }, []);
     const roomMates = useLoaderData()
+     useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
     return (
         <div>
             <div>

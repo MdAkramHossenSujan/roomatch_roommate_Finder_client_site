@@ -6,10 +6,14 @@ import { useLoaderData } from 'react-router';
 
 const UpdateRoomMate = () => {
     const data=useLoaderData()
+    const { pathname } = useLocation();
     useEffect(() => {
             document.title = `Updata The Data Of ${data.userName} | UpdateUser |RooMatch`;
           }, [data.userName]);
         //   console.log(data)
+         useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
     return (
         <div>
             <div>

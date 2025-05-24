@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import Error from '../Animation/Error';
-import { useRouteError } from 'react-router';
+import { useLocation, useRouteError } from 'react-router';
 
 const ErrorPage = () => {
 const error=useRouteError()
-
+const { pathname } = useLocation();
      useEffect(() => {
             document.title = `${error.data}`;
           }, [error.data]);
-    
+
+     useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
     // console.log(error.data)
     return (
         <div className='min-h-screen py-20'>

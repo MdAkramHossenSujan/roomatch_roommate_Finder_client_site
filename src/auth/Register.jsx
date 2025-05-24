@@ -73,16 +73,16 @@ const Register = () => {
                 <form onSubmit={handleRegister}>
                     <fieldset className="fieldset">
                         <label className="text-lg Space-Grotesk font-bold ">Your Name</label>
-                        <input required name='name' type="text" className="input text-gray-800 shadow-lg w-full" placeholder="Enter Your Name" />
+                        <input required name='name' type="text" className="input text-gray-800 dark:text-gray-300 shadow-lg w-full" placeholder="Enter Your Name" />
                         {
                             error && <p className='text-red-500'>{error}</p>
                         }
                         <label className="text-lg Space-Grotesk font-bold ">Photo URL</label>
-                        <input required name='photo' type="link" className="input text-gray-800 shadow-lg w-full" placeholder="Enter Your Photo URL" />
+                        <input required name='photo' type="link" className="input text-gray-800 dark:text-gray-300 shadow-lg w-full" placeholder="Enter Your Photo URL" />
                         <label className="text-lg Space-Grotesk font-bold ">Email Address</label>
-                        <input required name='email' type="email" className="input text-gray-800 shadow-lg w-full" placeholder="Email" />
+                        <input required name='email' type="email" className="input text-gray-800 dark:text-gray-300 shadow-lg w-full" placeholder="Email" />
                         <label className="text-lg Space-Grotesk font-bold">Password</label>
-                        <input required name='password' type="password" className="input dark:text-white text-gray-800 w-full shadow-lg" placeholder="Password" />
+                        <input required name='password' type="password" className="input dark:text-white  text-gray-800 w-full shadow-lg" placeholder="Password" />
                         {
                             passError && <p className='text-red-500'>{passError}</p>
                         }

@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useLocation } from 'react-router';
 import {
     FaEye,
     FaMoneyBillWave,
@@ -18,12 +18,16 @@ import Swal from 'sweetalert2';
 import Five from '../Animation/Five';
 import { AuthContext } from '../Provider/AuthProvider';
 const MyListings = () => {
+    const { pathname } = useLocation();
     const myAddings = useLoaderData()
     const [roomMates, setRoomMates] = useState(myAddings)
     const {user}=use(AuthContext)
      useEffect(() => {
             document.title = `RoomMateData Listing Of ${user.displayName} | RooMatch`;
           }, [user.displayName ]);
+           useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
         //   console.log(user)
     const handleDelete = (_id) => {
         // console.log(_id);

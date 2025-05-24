@@ -38,14 +38,14 @@ const RecentViews = () => {
     return (
         <>
             {
-                latestView.length == 0 ? <div>
+               user &&  latestView.length == 0 ? <div>
                     <div class="text-center text-4xl font-bold">
                         Explore your desired roommates
                     </div>
 
                     <Seven />
                 </div> :
-                    <div>
+                    user && <div>
                         <div class="text-center text-4xl font-bold pb-10">
                         Recently Visited
                     </div>

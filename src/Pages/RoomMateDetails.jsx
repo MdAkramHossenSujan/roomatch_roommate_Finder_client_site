@@ -1,5 +1,5 @@
-import React from 'react';
-import { useLoaderData } from 'react-router';
+import React, { useEffect } from 'react';
+import { useLoaderData, useLocation } from 'react-router';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import DetailedCard from '../components/DetailedCard';
@@ -8,7 +8,11 @@ import RecentViewsDetails from '../components/RecentViesDetails';
 
 const RoomMateDetails = () => {
     const data = useLoaderData()
+    const { pathname } = useLocation();
     // console.log(data)
+     useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
     return (
         <div>
             <div>
