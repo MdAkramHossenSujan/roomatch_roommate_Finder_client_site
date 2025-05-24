@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Bannercard = ({ info }) => {
     return (
@@ -28,8 +29,9 @@ const Bannercard = ({ info }) => {
                 <h1 className='text-3xl pt-18 lg:pt-0 lg:text-8xl poppins-regular md:text-5xl'>{info.country}</h1>
                 <p className='xl:w-1/2 text-xs lg:text-lg mt-4 w-2/3'>{info.comment}</p>
                 <div className='flex gap-4 pb-6 md:pb-0 flex-wrap mt-4'>
-                    <button className=' btn btn-sm md:btn-md bg-orange-600 border-none text-white'>Browse City</button>
+                   <Link to={'/browselisting'}>
                     <button className='btn btn-sm md:btn-md bg-orange-600 border-none text-white'>Choose Your RoomMate</button>
+                   </Link>
                 </div>
             </div>
         </div>

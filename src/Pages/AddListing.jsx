@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import ListingCard from '../components/ListingCard';
 import Footer from '../components/Footer';
 
 const AddListing = () => {
+    useEffect(() => {
+            document.title = `AddListing-Adding Roommate Data| RooMatch `;
+          }, []); 
     return (
         <div>
            <div>

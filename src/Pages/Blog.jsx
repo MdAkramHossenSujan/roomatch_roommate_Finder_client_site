@@ -10,6 +10,9 @@ import { MdOutlineDateRange } from 'react-icons/md';
 
 
 const BlogSection = () => {
+    useEffect(() => {
+                    document.title = `Blog-Create And View Blog | RooMatch`;
+                  }, []);
     const posts = useLoaderData()
     const [blogs, setblogs] = useState(posts)
     useEffect(() => {

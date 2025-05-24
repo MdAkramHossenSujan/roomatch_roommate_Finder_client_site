@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useLoaderData } from 'react-router';
@@ -16,9 +16,15 @@ import { format } from 'date-fns';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 import Five from '../Animation/Five';
+import { AuthContext } from '../Provider/AuthProvider';
 const MyListings = () => {
     const myAddings = useLoaderData()
     const [roomMates, setRoomMates] = useState(myAddings)
+    const {user}=use(AuthContext)
+     useEffect(() => {
+            document.title = `RoomMateData Listing Of ${user.displayName} | RooMatch`;
+          }, [user.displayName ]);
+          console.log(user)
     const handleDelete = (_id) => {
         console.log(_id);
         Swal.fire({
@@ -164,7 +170,7 @@ const MyListings = () => {
                                                     {/* Actions */}
                                                     <td className="py-4 px-4">
                                                         <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center gap-2">
-                                                            <Link to={``}>
+                                                            <Link to={`/updatelisting/${_id}`}>
                                                                 <button className="btn btn-xs lg:btn-sm btn-outline btn-primary flex items-center gap-1 w-full sm:w-auto">
                                                                     <FaEdit /> Update
                                                                 </button>

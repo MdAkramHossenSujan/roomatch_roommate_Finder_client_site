@@ -1,4 +1,4 @@
-import React, { use, useState, useRef } from 'react';
+import React, { use, useState, useRef, useEffect } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { NavLink, Link } from 'react-router';
@@ -9,20 +9,33 @@ import {
     FaFolderOpen,
     FaUserPlus,
     FaBlog,
+    FaCommentDots,
 } from 'react-icons/fa6';
 import { Tooltip } from 'react-tooltip'
 import toast from 'react-hot-toast';
 import './Header.css';
-import { FaHome, FaListAlt, FaPlusCircle, FaSignInAlt } from 'react-icons/fa';
+import { FaHome, FaListAlt, FaPlusCircle, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 
 const Header = () => {
     const { toggleTheme, theme, user, logOut } = use(AuthContext);
+    const [showModal, setShowModal] = useState(false);
+    const modalRef = useRef();
     const [open, setOpen] = useState(false);
     const handleSignOut = () => {
         logOut()
             .then(() => toast.success('Logged Out Successfully'))
             .catch(() => { });
+
     };
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (modalRef.current && !modalRef.current.contains(event.target)) {
+                setShowModal(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
     console.log(user)
     const Sidebar = (
         <>
@@ -45,7 +58,6 @@ const Header = () => {
                                 data-tooltip-id="view-tooltip"
                                 data-tooltip-content={user.displayName}
                                 data-tooltip-place="top"
-                                onClick={handleSignOut}
                                 className="w-20 h-20 rounded-full mt-4 border-4 border-green-400 dark:border-green-700 shadow-lg cursor-pointer transition-transform hover:scale-105"
                                 src={user?.photoURL || 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}
                                 alt="User"
@@ -54,7 +66,20 @@ const Header = () => {
                         </div>
                     )}
                 </div>
-
+                {
+                    user && <div className="mt-6 flex gap-8 border-b border-gray-300 pb-2 mb-2">
+                   <Link to={'/userBlog&reviews'}>
+                    <button className="flex items-center gap-2 cursor-pointer text-[16px] font-medium w-full">
+                        <FaCommentDots className="text-blue-600" />
+                        Comment
+                    </button>
+                   </Link>
+                    <button onClick={handleSignOut} className="flex cursor-pointer items-center gap-1 font-medium w-full text-[16px] px-1">
+                        <FaSignOutAlt className="text-red-500" />
+                        Sign Out
+                    </button>
+                </div>
+                }
                 <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
                     <FaHome />
                     <NavLink to="/" onClick={() => setOpen(false)}>Home</NavLink>
@@ -102,21 +127,21 @@ const Header = () => {
     return (
         <div className="fixed top-0 left-0 right-0  z-50 bg-white dark:bg-gray-900 shadow-md w-full">
 
+
             <div className="flex justify-between w-11/12 py-5 text-xl mx-auto max-h-screen poppins-regular">
-                {/* Mobile Menu Button */}
+
                 <span onClick={() => setOpen(!open)} className="flex lg:hidden gap-4">
                     {open ? <X size={30} /> : <Menu size={30} />}
                 </span>
 
-                {/* Sidebar for mobile */}
+
                 {open && Sidebar}
 
-                {/* Logo */}
                 <div className="lg:flex gap-2">
                     <p className="hidden lg:block text-4xl font-bold">RooMatch</p>
                 </div>
 
-                {/* Desktop Menu */}
+
                 <ul className="lg:flex hidden gap-6 text-gray-700 dark:text-gray-200 text-base font-semibold items-center">
 
                     <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
@@ -192,18 +217,51 @@ const Header = () => {
                     )}
                 </ul>
 
-                {/* Theme Toggle & User */}
                 <div className="lg:flex hidden gap-5 items-center">
                     {user && (
                         <img
                             data-tooltip-id="view-tooltip"
                             data-tooltip-content={user.displayName}
                             data-tooltip-place="top"
-                            onClick={handleSignOut}
+                            onClick={() => setShowModal(!showModal)}
                             className="w-10 h-10 rounded-full cursor-pointer"
                             src={user?.photoURL || 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}
                             alt="User"
                         />
+                    )}
+                    {showModal && (
+                        <div
+                            onClick={() => setShowModal(!showModal)}
+                            className="fixed inset-0 z-40 bg-opacity-80"
+                        >
+                            <div
+                                ref={modalRef}
+                                className="absolute right-4 top-20 w-80 bg-gray-800 text-white rounded-xl shadow-xl p-5 z-50"
+                            >
+                                <div className="text-center">
+                                    <img
+                                        src={user?.photoURL || 'https://lh3.googleusercontent.com/a/default-user=s96-c'}
+                                        alt="User Avatar"
+                                        className="mx-auto w-16 h-16 rounded-full"
+                                    />
+                                    <h2 className="mt-3 text-lg font-bold ">Hi, sujan!</h2>
+                                    <p className="text-sm dark:text-gray-300 mb-2">{user?.email}</p>
+                                </div>
+
+                                <div className="mt-6 flex border-t border-gray-200 pt-4">
+                                    <Link to={'/userBlog&reviews'}>
+                                    <button className="flex  items-center gap-3 text-[16px] font-medium w-full cursor-pointer px-3 py-2 rounded-md">
+                                        <FaCommentDots className="text-blue-600" />
+                                        Comment
+                                    </button>
+                                    </Link>
+                                    <button onClick={handleSignOut} className="flex items-center gap-3 font-medium w-full text-[16px] cursor-pointer px-3 py-2 rounded-md">
+                                        <FaSignOutAlt className="text-red-500" />
+                                        Sign Out
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     )}
                     <label
                         data-tooltip-id="view-tooltip"

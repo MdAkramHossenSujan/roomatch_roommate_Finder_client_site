@@ -14,15 +14,15 @@ const WhatYouFind = () => {
         <h1 className="text-xl font-bold text-green-800 dark:text-gray-300 mt-4">
           <span>
             <Typewriter
-              words={['Find Matching','Room Partner']}
+              words={['Find Matching','Room Partner','As']}
               loop={0}
               cursor
               cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1000}
+              typeSpeed={100}
+              deleteSpeed={100}
+              delaySpeed={1500}
             />
-          </span> As Roommate
+          </span>Roommate
         </h1>
         <p className="text-gray-700 dark:text-gray-300 mt-2">
           Discover compatible roommates based on lifestyle and shared interests.
@@ -34,16 +34,16 @@ const WhatYouFind = () => {
         <h1 className="text-xl font-bold text-red-700 dark:text-red-400 mt-4">
           <span>
             <Typewriter
-              words={['Search For Your']}
+              words={['Search For','Your','Desired']}
               loop={0}
               cursor
               cursorStyle="• "
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1000}
+              typeSpeed={100}
+              deleteSpeed={100}
+              delaySpeed={1500}
             />
           </span>
-          Desired Roommate
+           Roommate
         </h1>
         <p className="text-gray-700 dark:text-gray-300 mt-2">
           Explore detailed profiles to match your living preferences easily.
@@ -55,16 +55,16 @@ const WhatYouFind = () => {
         <h1 className="text-xl font-bold text-purple-600 dark:text-purple-400 mt-4">
           <span>
             <Typewriter
-              words={['Locate And Contact']}
+              words={['Locate And','Contact','Your']}
               loop={0}
               cursor
               cursorStyle="• "
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1000}
+              typeSpeed={100}
+              deleteSpeed={100}
+              delaySpeed={1500}
             />
           </span>
-          Your Roommate
+           Roommate
         </h1>
         <p className="text-gray-700 dark:text-gray-300 mt-2">
           Find nearby roommates and securely connect with just a click.
@@ -76,13 +76,13 @@ const WhatYouFind = () => {
         <h1 className="text-xl font-bold text-blue-800 dark:text-blue-300 mt-4">
           <span>
             <Typewriter
-              words={['Trusted & Scam-Free']}
+              words={['Trusted & Scam','Free']}
               loop={0}
               cursor
               cursorStyle="`"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1000}
+              typeSpeed={100}
+              deleteSpeed={100}
+              delaySpeed={1500}
             />
           </span> Platform
         </h1>

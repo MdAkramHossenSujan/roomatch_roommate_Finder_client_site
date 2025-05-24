@@ -3,6 +3,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 import { formatDistanceToNow } from 'date-fns';
 import { FaEye, FaTrash } from 'react-icons/fa6';
 import Seven from '../Animation/Seven';
+import { Link } from 'react-router';
 
 const RecentViews = () => {
     const { user, setLoader } = use(AuthContext)
@@ -71,7 +72,7 @@ const RecentViews = () => {
 
                                             <button
                                                 onClick={() => handleDelete(card._id)}
-                                                className="flex items-center gap-2 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white text-xs px-4 py-2 rounded-full shadow-md transition duration-200"
+                                                className="flex items-center cursor-pointer gap-2 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white text-xs px-4 py-2 rounded-full shadow-md transition duration-200"
                                                 aria-label="Remove item"
                                             >
                                                 <FaTrash />
@@ -87,9 +88,10 @@ const RecentViews = () => {
                                                     {formatDistanceToNow(new Date(card.createdAt), { addSuffix: true })}
                                                 </div>
                                             </div>
+                                            <Link to={`/browselisting/${card._id}`}>
                                             <button className="text-white cursor-pointer hover:text-orange-400 transition-transform transform hover:scale-110">
                                                 <FaEye size={20} />
-                                            </button>
+                                            </button></Link>
                                         </div>
                                     </div>
                                 </div>

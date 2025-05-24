@@ -30,6 +30,9 @@ const DetailedCard = ({ data }) => {
     objectives,
     likes
   } = data;
+  useEffect(() => {
+            document.title = `Details Data of ${userName} | ${userEmail} | RooMatch`;
+          }, [userEmail,userName]);
   console.log(user.email, userEmail, data)
   const [hasLiked, setHasLiked] = useState(likes);
   console.log(data._id)

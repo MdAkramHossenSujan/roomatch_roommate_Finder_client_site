@@ -10,7 +10,7 @@ const Seven = () => {
   const { View } = useLottie(options);
 
   return (
-    <div className='lg:w-80 w-56 md:w-66 mx-auto'>
+    <div className='lg:w-86 w-56 md:w-66 mx-auto'>
       {View}
     </div>
   );

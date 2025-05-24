@@ -82,7 +82,6 @@ export const router = createBrowserRouter([
                 </div>
             },
             {
-                path: '/auth',
                 element: <Auth></Auth>,
                 children: [
                     {

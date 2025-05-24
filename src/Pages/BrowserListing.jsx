@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -8,6 +8,9 @@ import { useLoaderData } from 'react-router';
 import Six from '../Animation/Six';
 
 const BrowserListing = () => {
+    useEffect(() => {
+                    document.title = `Browse-And-Explore RoomMates Posts | RooMatch`;
+                  }, []);
     const roomMates = useLoaderData()
     return (
         <div>

@@ -1,10 +1,13 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import { Outlet } from 'react-router';
 import Footer from '../components/Footer';
 
-const Auth = () => {
+const Auth = () => { 
+    useEffect(() => {
+                    document.title = `Register Your Account | RooMatch`;
+                  }, []);
     return (
         <div >
             <div>
