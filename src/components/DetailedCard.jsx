@@ -92,7 +92,6 @@ const DetailedCard = ({ data }) => {
         <div className="flex items-center gap-2"><User className="w-4 h-4 text-indigo-500" /> Gender: {gender}</div>
         <div className="flex items-center gap-2"><CalendarDays className="w-4 h-4 text-indigo-500" /> Age: {age}</div>
         <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-indigo-500" /> Location: {location}</div>
-        <div className="flex items-center gap-2"><Mail className="w-4 h-4 text-indigo-500" /> Email: {userEmail}</div>
         <div className="flex items-center gap-2"><BedDouble className="w-4 h-4 text-indigo-500" /> Room Type: {roomType}</div>
         <div className="flex items-center gap-2"><Info className="w-4 h-4 text-indigo-500" /> Rent: ৳{rent}</div>
         <div className="flex items-center gap-2"><User className="w-4 h-4 text-indigo-500" /> Lifestyle: {lifestyle}</div>
