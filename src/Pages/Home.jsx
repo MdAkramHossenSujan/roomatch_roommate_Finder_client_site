@@ -11,7 +11,6 @@ import HowItWorks from '../components/HowItWorks';
 
 const Home = () => {
     const { pathname } = useLocation();
-    const webInfo = useLoaderData()
     useEffect(() => {
         document.title = ` Home | RooMatch `;
       }, []); 
@@ -24,7 +23,7 @@ const Home = () => {
                 <Header />
             </div>
             <div className="pt-18">
-                <Banner webInfo={webInfo}>
+                <Banner>
 
                 </Banner>
             </div>

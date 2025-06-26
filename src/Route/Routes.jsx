@@ -23,11 +23,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>,
-                loader: () => fetch('https://roomatch-server.vercel.app/city'),
-                hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
-                    <span className="loading loading-spinner text-success"></span>
-                </div>
+                element: <Home></Home>
             },
             {
                 path: '/addlisting',

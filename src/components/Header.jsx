@@ -64,7 +64,7 @@ const Header = () => {
                             />
                             <Tooltip id="view-tooltip" />
                             <div>
-                                <h2 className="mt-3 text-lg font-bold ">Hi, sujan!</h2>
+                                <h2 className="mt-3 text-lg font-bold ">Hi, {user.displayName}!</h2>
                             <p className="text-sm dark:text-gray-700">{user?.email}</p>
                             </div>
                         </div>
@@ -248,7 +248,7 @@ const Header = () => {
                                         alt="User Avatar"
                                         className="mx-auto w-16 h-16 rounded-full"
                                     />
-                                    <h2 className="mt-3 text-lg font-bold ">Hi, sujan!</h2>
+                                    <h2 className="mt-3 text-lg font-bold ">Hi, {user.displayName}!</h2>
                                     <p className="text-sm dark:text-gray-300 mb-2">{user?.email}</p>
                                 </div>
 
