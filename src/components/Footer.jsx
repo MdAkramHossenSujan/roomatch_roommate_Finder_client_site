@@ -1,12 +1,12 @@
 import React from 'react';
 import { FaTwitter, FaInstagram, FaFacebook, FaGithub } from 'react-icons/fa';
+import logo from '../assets/rooms/roommates.png'
 const Footer = () => {
   return (
     <footer className="footer  sm:footer-horizontal dark:bg-neutral-900 bg-neutral-700 text-neutral-content grid-rows-2 p-10">
       <nav className="flex flex-col items-start gap-2">
         <img
-          src="https://i.ibb.co/fVgHsyT9/vecteezy-dramatic-modern-digital-ancestry-search-icon-light-blue-58015794.png"
-          alt="Roommate Services Logo"
+          src={logo}
           className="w-16 h-auto md:w-20 lg:w-24"
         />
         <h6 className="footer-title">Roommate Services</h6>

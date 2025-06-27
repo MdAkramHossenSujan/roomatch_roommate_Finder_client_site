@@ -15,7 +15,7 @@ import { Tooltip } from 'react-tooltip'
 import toast from 'react-hot-toast';
 import './Header.css';
 import { FaHome, FaListAlt, FaPlusCircle, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
-
+import logo from '../assets/rooms/roommates.png'
 const Header = () => {
     const { toggleTheme, theme, user, logOut } = use(AuthContext);
     const [showModal, setShowModal] = useState(false);
@@ -41,11 +41,12 @@ const Header = () => {
         <>
             <div className="fixed inset-0 bg-opacity-80 z-40" onClick={() => setOpen(false)} />
             <ul
-                className={`fixed top-0 left-0 z-50 w-72 h-full transform ${open ? 'translate-x-0' : '-translate-x-full'
+                className={`fixed top-0 left-0 z-50 w-76 h-full transform ${open ? 'translate-x-0' : '-translate-x-full'
                     } bg-gray-800 dark:bg-white text-white dark:text-green-900 p-6 transition-transform duration-300 ease-in-out shadow-xl rounded-r-3xl`}
             >
-                <div className="flex flex-col items-center mb-8">
+                <div className="flex flex-col items-center text-center mb-8">
                     <div className='flex gap-2'>
+                          <img className='h-10' src={logo} alt="" />
                         <p className="text-4xl font-bold tracking-wide text-green-400 dark:text-green-700">RooMatch</p>
                         <label onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
                             <Sun size={30} className="swap-on text-yellow-500" />
@@ -58,7 +59,7 @@ const Header = () => {
                                 data-tooltip-id="view-tooltip"
                                 data-tooltip-content={user.displayName}
                                 data-tooltip-place="top"
-                                className="w-20 h-20 rounded-full mt-4 border-4 border-green-400 dark:border-green-700 shadow-lg cursor-pointer transition-transform hover:scale-105"
+                                className="w-20 h-20 rounded-full mt-4 mx-auto border-4 border-green-400 dark:border-green-700 shadow-lg cursor-pointer transition-transform hover:scale-105"
                                 src={user?.photoURL || 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}
                                 alt="User"
                             />
@@ -141,12 +142,13 @@ const Header = () => {
 
                 {open && Sidebar}
 
-                <div className="lg:flex gap-2">
-                    <p className="hidden lg:block text-4xl font-bold">RooMatch</p>
+                <div className="hidden lg:flex gap-2">
+                    <img className='h-12' src={logo} alt="" />
+                    <p className="text-4xl lg:text-5xl my-auto font-bold">RooMatch</p>
                 </div>
 
 
-                <ul className="lg:flex hidden gap-6 text-gray-700 dark:text-gray-200 text-base font-semibold items-center">
+                <ul className="lg:flex hidden gap-6 text-gray-700 mr-12 xl:mr-18 dark:text-gray-200 text-base font-semibold items-center">
 
                     <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
                         <FaHome />
