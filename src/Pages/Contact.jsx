@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   FaEnvelope,
@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useLocation } from "react-router";
 
 const contactInfo = [
   {
@@ -56,6 +57,14 @@ const socialLinks = [
 ];
 
 const Contact = () => {
+    const { pathname } = useLocation();
+     useEffect(() => {
+            document.title = `Contact | Roomatch`;
+          }, []);
+
+     useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <div className="min-h-screen py-24 flex flex-col">
       <Header />

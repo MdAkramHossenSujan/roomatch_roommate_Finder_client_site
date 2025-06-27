@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   FaReact,
@@ -19,6 +19,7 @@ import { SiTailwindcss, SiMongodb, SiSwiper } from "react-icons/si";
 import { IoMdNotifications } from "react-icons/io";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useLocation } from "react-router";
 const techStack = [
   { name: "React", icon: <FaReact size={40} color="#61DBFB" /> },
   { name: "Tailwind CSS", icon: <SiTailwindcss size={40} color="#38B2AC" /> },
@@ -74,6 +75,14 @@ const coreFeatures = [
   },
 ];
 const AboutUs = () => {
+    const { pathname } = useLocation();
+     useEffect(() => {
+            document.title = `About the website | Roomatch`;
+          }, []);
+
+     useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <div className="py-20">
         <Header/>
