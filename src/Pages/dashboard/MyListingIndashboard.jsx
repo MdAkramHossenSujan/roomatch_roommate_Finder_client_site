@@ -1,15 +1,26 @@
-import React from 'react';
-import { FaEye } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router';
+import React from "react";
+import {
+  FaEye,
+  FaUserAlt,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaMoneyBillWave,
+  FaDoorOpen,
+} from "react-icons/fa";
+import { Link, useLoaderData } from "react-router";
 
 const MyListingIndashboard = () => {
-  const data = useLoaderData(); // Assuming data is an array of roommates
+  const data = useLoaderData();
   console.log(data);
 
   return (
     <div className="p-4 py-28 max-w-7xl mx-auto lg:py-14">
-      <h2 className="text-2xl font-semibold mb-4">My Roommates</h2>
-      <div className="overflow-x-auto">
+      <h2 className="text-2xl font-semibold mb-8 text-center">
+        My Roommate Listings
+      </h2>
+
+      {/* Table view for large screens */}
+      <div className="hidden lg:block overflow-x-auto">
         <table className="table table-zebra w-full">
           <thead>
             <tr>
@@ -30,37 +41,112 @@ const MyListingIndashboard = () => {
                   <td>
                     <div className="avatar">
                       <div className="w-12 rounded-full">
-                        <img src={roommate.photo} alt={roommate.userName} />
+                        <img
+                          src={roommate.photo}
+                          alt={roommate.userName}
+                        />
                       </div>
                     </div>
                   </td>
-                  <td>{roommate.userName}</td>
-                  <td>{roommate.location}</td>
+                  <td className="whitespace-nowrap">{roommate.userName}</td>
+                  <td className="whitespace-nowrap">{roommate.location}</td>
                   <td>{roommate.age}</td>
-                  <td>{roommate.contact}</td>
+                  <td className="whitespace-nowrap">{roommate.contact}</td>
                   <td>{roommate.rent} ৳</td>
                   <td>{roommate.roomType}</td>
                   <td>
-                     <Link  to={`/browselisting/${roommate._id}`}>
-                    
-                      <FaEye size={20} className='mx-auto'/>
-                    
+                    <Link to={`/browselisting/${roommate._id}`}>
+                      <FaEye
+                        size={20}
+                        className="mx-auto text-primary"
+                      />
                     </Link>
                   </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="8" className="text-center">
-                  No roommates found.
+                <td colSpan="8" className="text-center py-10">
+                  <div className="flex flex-col items-center justify-center text-gray-500">
+                    <FaUserAlt size={50} className="mb-4 text-gray-400" />
+                    <p className="text-lg font-medium">
+                      No roommates found.
+                    </p>
+                  </div>
                 </td>
               </tr>
             )}
           </tbody>
         </table>
       </div>
+
+      {/* Card view for small & medium screens */}
+      <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 space-y-6">
+        {data && data.length > 0 ? (
+          data.map((roommate) => (
+            <div
+              key={roommate._id}
+              className="bg-base-200 rounded-lg p-4 shadow-md flex gap-4 items-start"
+            >
+              <div className="avatar shrink-0">
+                <div className="w-20 rounded-full">
+                  <img
+                    src={roommate.photo}
+                    alt={roommate.userName}
+                  />
+                </div>
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-1 flex items-center gap-2">
+                  <FaUserAlt className="text-primary" />{" "}
+                  {roommate.userName}
+                </h3>
+                <p className="text-sm flex items-center gap-2 mb-1 text-gray-700">
+                  <FaMapMarkerAlt className="text-primary" />{" "}
+                  {roommate.location}
+                </p>
+                <p className="text-sm flex items-center gap-2 mb-1">
+                  Age:{" "}
+                  <span className="font-medium">
+                    {roommate.age}
+                  </span>
+                </p>
+                <p className="text-sm flex items-center gap-2 mb-1">
+                  <FaPhoneAlt className="text-primary" />{" "}
+                  {roommate.contact}
+                </p>
+                <p className="text-sm flex items-center gap-2 mb-1">
+                  <FaMoneyBillWave className="text-primary" />{" "}
+                  {roommate.rent} ৳
+                </p>
+                <p className="text-sm flex items-center gap-2 mb-2">
+                  <FaDoorOpen className="text-primary" />{" "}
+                  {roommate.roomType}
+                </p>
+                <Link
+                  to={`/browselisting/${roommate._id}`}
+                  className="btn btn-primary btn-sm mt-2"
+                >
+                  <FaEye className="mr-2" /> See Details
+                </Link>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="flex flex-col items-center justify-center mt-16 text-gray-500">
+            <FaUserAlt size={60} className="mb-4 text-gray-400" />
+            <p className="text-xl font-semibold">
+              No roommates found.
+            </p>
+            <p className="text-center text-gray-500 mt-2">
+              You haven’t added any roommate listings yet.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
 export default MyListingIndashboard;
+
