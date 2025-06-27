@@ -10,11 +10,12 @@ import {
     FaUserPlus,
     FaBlog,
     FaCommentDots,
+    FaPhone,
 } from 'react-icons/fa6';
 import { Tooltip } from 'react-tooltip'
 import toast from 'react-hot-toast';
 import './Header.css';
-import { FaHome, FaListAlt, FaPlusCircle, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
+import { FaHome, FaInfoCircle, FaListAlt, FaPlusCircle, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import logo from '../assets/rooms/roommates.png'
 const Header = () => {
     const { toggleTheme, theme, user, logOut } = use(AuthContext);
@@ -46,7 +47,7 @@ const Header = () => {
             >
                 <div className="flex flex-col items-center text-center mb-8">
                     <div className='flex gap-2'>
-                          <img className='h-10' src={logo} alt="" />
+                        <img className='h-10' src={logo} alt="" />
                         <p className="text-4xl font-bold tracking-wide text-green-400 dark:text-green-700">RooMatch</p>
                         <label onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
                             <Sun size={30} className="swap-on text-yellow-500" />
@@ -66,7 +67,7 @@ const Header = () => {
                             <Tooltip id="view-tooltip" />
                             <div>
                                 <h2 className="mt-3 text-lg font-bold ">Hi, {user.displayName}!</h2>
-                            <p className="text-sm dark:text-gray-700">{user?.email}</p>
+                                <p className="text-sm dark:text-gray-700">{user?.email}</p>
                             </div>
                         </div>
                     )}
@@ -110,7 +111,14 @@ const Header = () => {
                     <FaBlog />
                     <NavLink to="/userBlog&reviews" onClick={() => setOpen(false)}>Blog & Reviews</NavLink>
                 </li>
-
+                <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
+                    <FaPhone />
+                    <NavLink to="/contact" onClick={() => setOpen(false)}>Contact</NavLink>
+                </li>
+                <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
+                    <FaInfoCircle />
+                    <NavLink to="/aboutus" onClick={() => setOpen(false)}>About Us</NavLink>
+                </li>
                 {!user && (
                     <div className="mt-2">
                         <Link to="/auth/register" onClick={() => setOpen(false)}>
@@ -143,12 +151,12 @@ const Header = () => {
                 {open && Sidebar}
 
                 <div className="hidden lg:flex gap-2">
-                    <img className='h-12' src={logo} alt="" />
-                    <p className="text-4xl lg:text-5xl my-auto font-bold">RooMatch</p>
+                    <img className='h-12 lg:h-8 my-auto xl:h-12' src={logo} alt="" />
+                    <p className="text-5xl lg:text-3xl xl:text-5xl my-auto font-bold">RooMatch</p>
                 </div>
 
 
-                <ul className="lg:flex hidden gap-6 text-gray-700 mr-12 xl:mr-18 dark:text-gray-200 text-base font-semibold items-center">
+                <ul className="lg:flex hidden gap-6 lg:text-[12px] xl:text-[16px] text-gray-700 lg:mr-0 mr-12 xl:mr-18 dark:text-gray-200 text-base font-semibold items-center">
 
                     <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
                         <FaHome />
@@ -199,9 +207,17 @@ const Header = () => {
                                     </NavLink>
                                 </li>
                             )}
+                            
                         </ul>
                     </div>
-
+                    <li className="py-2 font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
+                        <FaPhone />
+                        <NavLink to="/contact" onClick={() => setOpen(false)}>Contact</NavLink>
+                    </li>
+                    <li className="py-2 font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
+                        <FaInfoCircle />
+                        <NavLink to="/aboutus" onClick={() => setOpen(false)}>About Us</NavLink>
+                    </li>
 
 
 

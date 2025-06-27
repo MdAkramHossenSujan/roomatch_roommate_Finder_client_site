@@ -15,6 +15,8 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import RoomMateDetails from "../Pages/RoomMateDetails";
 import UpdateRoomMate from "../Pages/UpdateRoomMate";
 import BlogSection from "../Pages/Blog";
+import AboutUs from "../Pages/AboutUs";
+import Contact from "../Pages/Contact";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -41,8 +43,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/userBlog&reviews',
-                element:<BlogSection></BlogSection>,
-                loader:()=>fetch('https://roomatch-server.vercel.app/blog'),
+                element: <BlogSection></BlogSection>,
+                loader: () => fetch('https://roomatch-server.vercel.app/blog'),
                 hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
                     <span className="loading loading-spinner text-success"></span>
                 </div>
@@ -76,6 +78,12 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
                     <span className="loading loading-spinner text-success"></span>
                 </div>
+            }, {
+                path: '/aboutus',
+                Component: AboutUs
+            }, {
+                path: '/contact',
+                Component: Contact
             },
             {
                 element: <Auth></Auth>,
