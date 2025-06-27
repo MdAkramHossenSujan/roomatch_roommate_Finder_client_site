@@ -8,7 +8,7 @@ const WhatYouFind = () => {
   return (
     <div>
       <p className='font-bold text-4xl text-center mt-10'>What We Provides</p>
-      <div className="w-11/12 lg:w-4/5 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-12">
+      <div className="max-w-[1440px] px-6 lg:px-12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-12">
       <div className="text-center p-4 bg-transparent dark:bg-transparent">
         <One />
         <h1 className="text-xl font-bold text-green-800 dark:text-gray-300 mt-4">

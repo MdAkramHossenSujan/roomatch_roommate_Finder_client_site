@@ -23,7 +23,7 @@ const Featured = () => {
         </div>;
 
   return (
-    <div className='w-11/12 md:w-4/5 grid grid-col-1 md:grid-cols-2 lg:grid-col-3 xl:grid-cols-4 gap-6 mx-auto my-10 md:my-20'>
+    <div className='max-w-[1440px] px-6 lg:px-12 grid grid-col-1 md:grid-cols-2 lg:grid-col-3 xl:grid-cols-4 gap-6 mx-auto my-10 md:my-20'>
       {roomMates.map((roommate) => (
         <FeaturedCard key={roommate._id} roommate={roommate} />
       ))}
