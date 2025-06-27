@@ -7,7 +7,7 @@ const AllRoommates = () => {
   console.log(data);
 
   return (
-    <div className="p-4 py-28 lg:py-16 max-w-7xl mx-auto">
+    <div className="p-4 py-28 lg:py-16 max-w-7xl min-h-screen mx-auto">
       <h2 className="text-4xl px-6 font-semibold mb-8 text-center">All Roommates</h2>
 
       {/* Table view - large screens */}

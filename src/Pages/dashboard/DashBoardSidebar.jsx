@@ -134,7 +134,7 @@ const DashboardSidebar = () => {
         </div>
       </div>
 
-      <aside className="hidden lg:flex w-70 bg-white dark:bg-gray-800 h-screen border-r border-gray-200 dark:border-gray-700 p-6 flex-col justify-between">
+      <aside className="hidden lg:flex w-70 fixed bg-white dark:bg-gray-800 h-screen border-r border-gray-200 dark:border-gray-700 p-6 flex-col justify-between">
         <div>
           <div className="mb-10 text-center">
             <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-2">

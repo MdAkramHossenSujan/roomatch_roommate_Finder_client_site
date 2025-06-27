@@ -29,7 +29,7 @@ const contactInfo = [
   {
     type: "Address",
     icon: <FaMapMarkerAlt size={28} className="text-primary" />,
-    value: "raojan,Pahartali Street, Chattagram, Bangladesh",
+    value: "Raojan,Pahartali Street, Chattagram, Bangladesh",
   },
 ];
 
@@ -104,14 +104,14 @@ const Contact = () => {
               {href ? (
                 <a
                   href={href}
-                  className="text-gray-700 hover:text-primary"
+                  className="text-gray-700 dark:text-gray-400 hover:text-primary"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {value}
                 </a>
               ) : (
-                <p className="text-gray-700">{value}</p>
+                <p className="text-gray-700 dark:text-gray-400">{value}</p>
               )}
             </motion.div>
           ))}
@@ -124,7 +124,7 @@ const Contact = () => {
           className="text-center"
         >
           <h2 className="text-3xl font-semibold mb-6">Follow Us</h2>
-          <div className="flex justify-center space-x-8 text-gray-700">
+          <div className="flex justify-center space-x-8 text-gray-700 dark:text-gray-400">
             {socialLinks.map(({ icon, url, name }, idx) => (
               <a
                 key={idx}

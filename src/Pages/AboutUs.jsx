@@ -95,7 +95,7 @@ const AboutUs = () => {
         className="text-center mb-16"
       >
         <h1 className="text-4xl font-bold mb-4 text-primary">Roomatch</h1>
-        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+        <p className="text-lg text-gray-700 dark:text-gray-400 max-w-3xl mx-auto">
           Roomatch is a full-stack roommate matching platform built for ease,
           interactivity, and personalization. Users can post listings, browse
           roommate profiles, interact through likes and comments, and enjoy a

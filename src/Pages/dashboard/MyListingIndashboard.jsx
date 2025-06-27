@@ -14,7 +14,7 @@ const MyListingIndashboard = () => {
   console.log(data);
 
   return (
-    <div className="p-4 py-28 max-w-7xl mx-auto lg:py-14">
+    <div className="p-4 py-28 max-w-7xl mx-auto min-h-screen lg:py-14">
       <h2 className="text-2xl font-semibold mb-8 text-center">
         My Roommate Listings
       </h2>
