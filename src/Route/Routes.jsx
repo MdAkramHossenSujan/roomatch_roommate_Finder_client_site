@@ -17,6 +17,10 @@ import UpdateRoomMate from "../Pages/UpdateRoomMate";
 import BlogSection from "../Pages/Blog";
 import AboutUs from "../Pages/AboutUs";
 import Contact from "../Pages/Contact";
+import DashboardHome from "../Pages/dashboard/DashBoardContent";
+import DashboardPage from "../Pages/dashboard/DashBoard";
+import MyListingIndashboard from "../Pages/dashboard/MyListingIndashboard";
+import AllRoommates from "../Pages/dashboard/AllRoommates";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -84,6 +88,40 @@ export const router = createBrowserRouter([
             }, {
                 path: '/contact',
                 Component: Contact
+            },
+            {
+                path: '/dashboard',
+                element: <PrivateRoute>
+                    <DashboardPage></DashboardPage>
+                </PrivateRoute>,
+                children: [
+                    {
+                        index: true,
+                        Component: DashboardHome,
+                        loader: () => fetch('https://roomatch-server.vercel.app/roommates'),
+                        hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+                            <span className="loading loading-spinner text-success"></span>
+                        </div>
+                    },
+                    {
+                        path: '/dashboard/:email',
+                        loader: ({ params }) => fetch(`https://roomatch-server.vercel.app/roommates/user/${params.email}`),
+                        element: <PrivateRoute>
+                            <MyListingIndashboard></MyListingIndashboard>
+                        </PrivateRoute>,
+                        hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+                            <span className="loading loading-spinner text-success"></span>
+                        </div>
+                    },
+            {
+                path: '/dashboard/all-roommates',
+                element: <AllRoommates/>,
+                loader: () => fetch('https://roomatch-server.vercel.app/roommates'),
+                hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+                    <span className="loading loading-spinner text-success"></span>
+                </div>
+            },
+                ]
             },
             {
                 element: <Auth></Auth>,

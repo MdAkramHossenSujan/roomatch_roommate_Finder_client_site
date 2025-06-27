@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const Bannercard = ({ info }) => {
     return (
        <div
-  className="h-[70vh] relative overflow-hidden"
+  className="h-[67vh] relative overflow-hidden"
 >
   <div
     style={{

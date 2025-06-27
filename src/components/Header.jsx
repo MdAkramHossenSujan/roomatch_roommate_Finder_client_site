@@ -11,6 +11,7 @@ import {
     FaBlog,
     FaCommentDots,
     FaPhone,
+    FaDashcube,
 } from 'react-icons/fa6';
 import { Tooltip } from 'react-tooltip'
 import toast from 'react-hot-toast';
@@ -49,10 +50,7 @@ const Header = () => {
                     <div className='flex gap-2'>
                         <img className='h-10' src={logo} alt="" />
                         <p className="text-4xl font-bold tracking-wide text-green-400 dark:text-green-700">RooMatch</p>
-                        <label onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
-                            <Sun size={30} className="swap-on text-yellow-500" />
-                            <Moon size={30} className="swap-off" />
-                        </label>
+
                     </div>
                     {user && (
                         <div>
@@ -119,20 +117,10 @@ const Header = () => {
                     <FaInfoCircle />
                     <NavLink to="/aboutus" onClick={() => setOpen(false)}>About Us</NavLink>
                 </li>
-                {!user && (
-                    <div className="mt-2">
-                        <Link to="/auth/register" onClick={() => setOpen(false)}>
-                            <button className="w-full flex py-2 cursor-pointer items-center justify-center dark:bg-gray-100 ">
-                                <FaUserPlus /> Sign Up
-                            </button>
-                        </Link>
-                        <Link to="/auth/signin" onClick={() => setOpen(false)}>
-                            <button className="w-full mt-3 py-2 cursor-pointer flex items-center justify-center dark:bg-gray-100 ">
-                                <FaSignInAlt /> Log In
-                            </button>
-                        </Link>
-                    </div>
-                )}
+                <li className="py-2 text-lg font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
+                    <FaDashcube />
+                    <NavLink to="/dashboard" onClick={() => setOpen(false)}>Dashboard</NavLink>
+                </li>
             </ul>
         </>
     );
@@ -156,23 +144,23 @@ const Header = () => {
                 </div>
 
 
-                <ul className="lg:flex hidden gap-6 lg:text-[12px] xl:text-[16px] text-gray-700 lg:mr-0 mr-12 xl:mr-18 dark:text-gray-200 text-base font-semibold items-center">
+                <ul className="flex xl:gap-6 gap-3 lg:text-[12px] xl:text-[16px] text-gray-700  dark:text-gray-200 text-base font-semibold items-center">
 
-                    <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
+                    <li className="lg:flex hidden items-center gap-1 hover:text-blue-600 transition-all">
                         <FaHome />
                         <NavLink to="/">Home</NavLink>
                     </li>
 
-                    <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
+                    <li className="hidden lg:flex items-center gap-1 hover:text-blue-600 transition-all">
                         <FaPlusCircle />
                         <NavLink to="/addlisting">Add RoomMate</NavLink>
                     </li>
-                    <li className="flex items-center gap-1 hover:text-blue-600 transition-all">
+                    <li className="hidden lg:flex items-center gap-1 hover:text-blue-600 transition-all">
                         <FaBlog />
                         <NavLink to="/userBlog&reviews">Blog & Review</NavLink>
                     </li>
                     {/* Dropdown */}
-                    <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+                    <div className="dropdown hidden lg:block dropdown-hover dropdown-bottom dropdown-end">
                         <label
                             tabIndex={0}
                             className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors duration-300 font-semibold"
@@ -207,18 +195,21 @@ const Header = () => {
                                     </NavLink>
                                 </li>
                             )}
-                            
+
                         </ul>
                     </div>
-                    <li className="py-2 font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
+                    <li className="py-2 font-bold hidden lg:flex items-center gap-3  hover:text-blue-900 transition-colors">
                         <FaPhone />
-                        <NavLink to="/contact" onClick={() => setOpen(false)}>Contact</NavLink>
+                        <NavLink to="/contact">Contact</NavLink>
                     </li>
-                    <li className="py-2 font-medium flex items-center gap-3 hover:text-green-400 dark:hover:text-green-700 transition-colors">
+                    <li className="py-2 font-bold hidden lg:flex items-center gap-3 hover:text-blue-900 transition-colors">
                         <FaInfoCircle />
-                        <NavLink to="/aboutus" onClick={() => setOpen(false)}>About Us</NavLink>
+                        <NavLink to="/aboutus" >About Us</NavLink>
                     </li>
-
+                    <li className="py-2 font-bold hidden lg:flex items-center gap-3 hover:text-blue-900 transition-colors">
+                        <FaDashcube />
+                        <NavLink to="/dashboard">Dashboard</NavLink>
+                    </li>
 
 
                     {/* Auth Links */}
@@ -237,6 +228,13 @@ const Header = () => {
                             </Link>
                         </div>
                     )}
+                    <label
+                        data-tooltip-id="view-tooltip"
+                        data-tooltip-content={theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+                        data-tooltip-place="top" onClick={toggleTheme} className={`cursor-pointer lg:hidden  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
+                      <Moon size={28} className="swap-on text-gray-400" />
+                                              <Sun size={28} className="swap-off text-yellow-400" />
+                    </label>
                 </ul>
 
                 <div className="lg:flex hidden gap-5 items-center">
@@ -289,11 +287,12 @@ const Header = () => {
                         data-tooltip-id="view-tooltip"
                         data-tooltip-content={theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
                         data-tooltip-place="top" onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
-                        <Sun size={30} className="swap-on text-yellow-500" />
-                        <Moon size={30} className="swap-off" />
+                       <Moon size={28} className="swap-on text-gray-400" />
+                                               <Sun size={28} className="swap-off text-yellow-400" />
                     </label>
                     <Tooltip id="view-tooltip" />
                 </div>
+
             </div>
         </div>
     );

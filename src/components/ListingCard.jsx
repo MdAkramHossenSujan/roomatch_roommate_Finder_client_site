@@ -1,7 +1,7 @@
 import React, { use } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import toast from 'react-hot-toast';
-
+import bg from '../assets/rooms/pexels-sheep-556180-1846416.jpg'
 const ListingCard = () => {
     const { user } = use(AuthContext)
     
@@ -38,7 +38,7 @@ const ListingCard = () => {
 
             <div
                 style={{
-                    backgroundImage: `url(https://i.ibb.co/KvndgXf/pexels-rdne-7683817.jpg)`,
+                    backgroundImage: `url(${bg})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     filter: 'blur(8px)',
